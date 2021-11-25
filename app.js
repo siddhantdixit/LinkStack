@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const axios = require("axios");
+var _ = require('lodash');
 require("dotenv").config();
 
 const app = express();
@@ -50,11 +51,56 @@ app.get("/", (req, res) => {
 
 
 app.get("/login",(req,res)=>{
-  //Login Page
+
   res.render('login');
 });
 
+app.post("/login",(req,res)=>{
+
+});
+
+
 
 app.get("/signup",(req,res)=>{
+
   res.render('signup');
+});
+
+
+app.post("/signup",(req,res)=>{
+
+});
+
+
+app.get("/forgot-password",(req,res)=>{
+  if(_.isEmpty(req.query) == false)
+  {
+    // With Parameters
+
+    console.log("With Parameters");
+    console.log(req.query);
+  }
+  else
+  {
+    // Without Parameters
+
+    console.log("No Parameters");
+    console.log("EMPTY");
+  }
+});
+
+
+app.post("/reset-password",(req,res)=>{
+
+
+});
+
+app.get("/verify",(req,res)=>{
+
+});
+
+
+
+app.get("/dashboard",(req,res)=>{
+  
 });
