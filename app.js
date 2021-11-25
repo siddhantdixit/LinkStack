@@ -1,20 +1,21 @@
 const express = require("express");
 const morgan = require("morgan");
 const axios = require("axios");
-require('dotenv').config()
+require("dotenv").config();
 
 const app = express();
 
-app.use(morgan("dev"));
 
-app.set('json spaces', 2)
+app.use(express.static('public'));
+app.use(morgan("dev"));
+app.set("view engine", "pug");
+app.set("json spaces", 2);
 
 app.listen(process.env.PORT || 80, () => {
   console.log(`Listening at.... http://localhost:${process.env.PORT || 80}`);
 });
 
-
-
+/*
 
 app.get("/", async (req, res) => {
   // res.send(req.headers);
@@ -41,10 +42,19 @@ app.get("/", async (req, res) => {
 
 });
 
-app.get("/api/info",(req,res)=>{
-  res.send('OOP Project LinkedList');
+*/
+
+app.get("/", (req, res) => {
+  res.render('index');
 });
 
-app.use((req, res) => {
-  res.send("Not Found");
+
+app.get("/login",(req,res)=>{
+  //Login Page
+  res.render('login');
+});
+
+
+app.get("/signup",(req,res)=>{
+  res.render('signup');
 });
