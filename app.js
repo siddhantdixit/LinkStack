@@ -50,8 +50,22 @@ app.get("/", (req, res) => {
 });
 
 
+const autoLogin = (req,res) => {
+  
+}
+
+
+
 app.get("/login",(req,res)=>{
 
+  if(autoLogin(req,res))
+  {
+    console.log("Logged IN");
+  }
+  else
+  {
+    console.log("Not Logged In");
+  }
   res.render('login');
 });
 
@@ -102,5 +116,5 @@ app.get("/verify",(req,res)=>{
 
 
 app.get("/dashboard",(req,res)=>{
-  
+
 });
