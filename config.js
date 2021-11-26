@@ -10,7 +10,12 @@ const JWT_LOGIN_Secret = 'fdb70dc0aab3950f7bf20f906c84cb96a7278f47a0992ff52a5ad2
 const LOGIN_MAXAGE = 5 * (24 * 60 * 60) // 5 days
 
 
+// Database URL
+const dbURI = 'mongodb://localhost:27017/ProjectLinkedList';
+
+
 module.exports = {
     JWT_LOGIN_Secret,
-    LOGIN_MAXAGE
+    LOGIN_MAXAGE,
+    dbURI
 }
