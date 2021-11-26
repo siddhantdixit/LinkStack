@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const axios = require("axios");
+var cookieParser = require('cookie-parser')
 var _ = require('lodash');
 const { JWT_LOGIN_Secret, LOGIN_MAXAGE } = require("./config");
 require("dotenv").config();
@@ -12,7 +13,7 @@ app.use(morgan("dev"));
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
-app.use(cookieparser());
+app.use(cookieParser());
 app.set("view engine", "pug");
 app.set("json spaces", 2);
 
