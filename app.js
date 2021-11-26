@@ -3,8 +3,14 @@ const morgan = require("morgan");
 const axios = require("axios");
 var cookieParser = require('cookie-parser')
 var _ = require('lodash');
-const { JWT_LOGIN_Secret, LOGIN_MAXAGE } = require("./config");
+const { JWT_LOGIN_Secret, LOGIN_MAXAGE, dbURI } = require("./config");
 require("dotenv").config();
+
+
+//Files
+const Account = require('./models/account');
+const mongoose = require("mongoose");
+
 
 const app = express();
 
@@ -17,9 +23,16 @@ app.use(cookieParser());
 app.set("view engine", "pug");
 app.set("json spaces", 2);
 
-app.listen(process.env.PORT || 80, () => {
-  console.log(`Listening at.... http://localhost:${process.env.PORT || 80}`);
-});
+
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
+  .then((result) => {
+    console.log('Connected to MongoDB.....');
+    app.listen(process.env.PORT || 80, () => {
+      console.log(`Listening at.... http://localhost:${process.env.PORT || 80}`);
+    });
+  })
+  .catch((err) => console.log(err));
+
 
 /*
 
@@ -78,7 +91,26 @@ app.get("/login",(req,res)=>{
   res.render('login');
 });
 
-app.post("/login",(req,res)=>{
+app.post("/login",async (req,res)=>{
+  const {username,password} = req.body;
+  if(!username || !password)
+  {
+    res.send("Enter Username and Password");
+    return;
+  }
+  
+  try {
+    const user = await Account.login(username,password);
+    if(user)
+    {
+      res.send(user);
+    }
+
+  } catch (error) {
+    console.log(error.message);
+    res.send("Invalid Username or Password");
+  }
+
 
 });
 
@@ -90,8 +122,62 @@ app.get("/signup",(req,res)=>{
 });
 
 
-app.post("/signup",(req,res)=>{
+app.post("/signup",async (req,res)=>{
+  const {username,password,email} = req.body;
 
+  if(!username || !password || !email)
+  {
+    res.send("Enter Username , Password, Email");
+    return;
+  }
+
+  try
+  {
+    const user_id = await Account.create({username,password,email});
+    if(user_id)
+    {
+      console.log("Account Created Successfully ... ");
+      console.log(user_id);
+      res.send(user_id);
+    }
+    else
+    {
+      console.log("Something Went Wrong!");
+    }
+  }catch(error)
+  {
+    console.log(error);
+
+    let outmsg = [];
+
+    if (error.code && error.code === 11000) 
+    {
+      outmsg.push('Email is Already In Use');
+    }
+
+    if(error.errors)
+    {
+      if(error.errors['username'])
+      {
+        console.log(error.errors['username'].message);
+        outmsg.push(error.errors['username'].message);
+      }
+
+      if(error.errors['email'])
+      {
+        console.log(error.errors['email'].message);
+        outmsg.push(error.errors['email'].message);
+      }
+
+      if(error.errors['password'])
+      {
+        console.log(error.errors['password'].message);
+        outmsg.push(error.errors['password'].message);
+      }
+    }
+
+    res.send({"msg":"Please enter valid information","errors":outmsg});
+  }
 });
 
 
