@@ -127,11 +127,13 @@ app.get("/login",(req,res)=>{
   else
   {
     console.log("Not Logged In");
+    res.clearCookie("jwt");
     res.render('login');
   }
 });
 
 app.post("/login",async (req,res)=>{
+  console.log(req.body);
   if(req.cookies.jwt)
   {
     res.send("Logout from existing account");
@@ -162,7 +164,7 @@ app.post("/login",async (req,res)=>{
         // Set Login Cookie to session only
         res.cookie("jwt", LToken, { httpOnly: true});
       }
-      res.send("Logged in Successfully");
+      res.send({code:'007',msg:"Logged in Successfully"});
     }
 
   } catch (error) {
@@ -376,4 +378,9 @@ app.get("/dashboard", async (req, res) => {
     res.redirect("/login");
   }
 
+});
+
+app.get("/logout", async(req,res)=>{
+  res.clearCookie('jwt');
+  res.redirect("/login");
 });

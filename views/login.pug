@@ -1,44 +1,58 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Login</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
-    
-
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
-  </head>
+  - title = "Login"
+  include partials/header.pug
 
   <body class="text-center">
-    <form class="form-signin">
+    <form id="loginform" class="form-signin">
       <img class="mb-4" src="images/logo.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Login</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <input type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
         <label>
-          <input type="checkbox" value="remember-me"> Remember me
+          <input id="inputRemeber" type="checkbox" value="remember-me" checked> Remember me
         </label>
       </div>
       a(href="") Forgot Password?
       br
       br
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <button id="loginbutton" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <button class="btn btn-lg btn-danger btn-block" onclick="window.location.href='/signup'" type="button">Register</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
     </form>
   </body>
+
+  script.
+      $("#loginform").submit(function( event ) {
+        event.preventDefault();
+        
+        let usernm_inp = $("#inputEmail").val();
+        let passwrd_inp = $("#inputPassword").val();
+        let remember_inp = $("#inputRemeber").is(':checked');
+
+
+        axios.post('/login', {
+            username: usernm_inp,
+            password: passwrd_inp,
+            rememberme: remember_inp
+          })
+          .then(function (response) {
+            console.log(response);
+            if(response.data.code === '007')
+            {
+              window.location.href='/dashboard';
+            }
+            else
+            {
+              alert("Incorred Username or Password");
+            }
+          })
+          .catch(function (error) {
+            alert("Something Went Wrong! Try Again Later");
+          });
+      });
 </html>
