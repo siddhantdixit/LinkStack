@@ -9,7 +9,10 @@ require("dotenv").config();
 
 //Files
 const Account = require('./models/account');
+const {sendEmailVerificationLink}= require('./utils/emailController');
+
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
 
 
 const app = express();
@@ -141,12 +144,25 @@ app.post("/signup",async (req,res)=>{
 
   try
   {
-    const user_id = await Account.create({username,password,email});
-    if(user_id)
+    const user = await Account.create({username,password,email});
+    if(user)
     {
       console.log("Account Created Successfully ... ");
-      console.log(user_id);
-      res.send(user_id);
+      // console.log(user_id);
+      // res.send(user_id);
+      const VToken = createVerificationToken(user._id);
+
+      sendEmailVerificationLink(email,VToken, (response) => {
+        console.log("==== app.js ======");
+        console.log(response);
+        if (response == 200) {
+          res.send("Verification Email Successfully Sent!");
+        } else {
+          // Account Created Successfully But Failed to Send Verification Email
+          res.sendStatus(404);
+        }
+      });
+
     }
     else
     {
@@ -227,6 +243,6 @@ app.get("/verify",(req,res)=>{
 
 
 
-app.get("/dashboard",(req,res)=>{
+app.get("/dashboard", async (req, res) => {
 
 });

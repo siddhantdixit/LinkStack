@@ -20,6 +20,11 @@ const accountSchema = new mongoose.Schema({
         required:true,
         validate:[validator.isStrongPassword,'Please enter a strong password']
     },
+    status:{
+      type:String,
+      enum:['verification','active'],
+      default:'verification'
+    }
 },{strict:false});
 
 accountSchema.pre("save", async function () {
