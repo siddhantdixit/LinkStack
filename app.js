@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const axios = require("axios");
 var cookieParser = require('cookie-parser')
 var _ = require('lodash');
-const { JWT_LOGIN_Secret, LOGIN_MAXAGE, dbURI } = require("./config");
+const { JWT_LOGIN_Secret, LOGIN_MAXAGE, dbURI, JWT_VERIFICATION_Secret, VERIFICATION_MAXAGE } = require("./config");
 require("dotenv").config();
 
 
@@ -78,6 +78,13 @@ const createLoginToken = (id) => {
   });
 };
 
+const createVerificationToken = (id) => {
+  return jwt.sign({ id }, JWT_VERIFICATION_Secret, {
+    expiresIn: VERIFICATION_MAXAGE,
+  });
+};
+
+
 app.get("/login",(req,res)=>{
 
   if(autoLogin(req,res))
@@ -127,6 +134,7 @@ app.post("/signup",async (req,res)=>{
 
   if(!username || !password || !email)
   {
+    res.status(404);
     res.send("Enter Username , Password, Email");
     return;
   }
@@ -143,6 +151,7 @@ app.post("/signup",async (req,res)=>{
     else
     {
       console.log("Something Went Wrong!");
+      res.sendStatus(404);
     }
   }catch(error)
   {
@@ -152,7 +161,15 @@ app.post("/signup",async (req,res)=>{
 
     if (error.code && error.code === 11000) 
     {
-      outmsg.push('Email is Already In Use');
+      if('username' in error.keyPattern)
+      {
+        outmsg.push('Username is Already In Use');
+      }
+
+      if('email' in error.keyPattern)
+      {
+        outmsg.push('Email is Already In Use');
+      }
     }
 
     if(error.errors)
@@ -175,7 +192,7 @@ app.post("/signup",async (req,res)=>{
         outmsg.push(error.errors['password'].message);
       }
     }
-
+    res.status(404);
     res.send({"msg":"Please enter valid information","errors":outmsg});
   }
 });
