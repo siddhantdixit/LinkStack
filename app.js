@@ -72,7 +72,15 @@ app.get("/", (req, res) => {
 
 
 const autoLogin = (req,res) => {
-  
+  const token = req.cookies.jwt;
+  if(token)
+  {
+    return jwt.verify(token, JWT_LOGIN_Secret);
+  }
+  else
+  {
+    return false;
+  }
 }
 
 const createLoginToken = (id) => {
@@ -93,16 +101,23 @@ app.get("/login",(req,res)=>{
   if(autoLogin(req,res))
   {
     console.log("Logged IN");
+    res.redirect('/dashboard');
   }
   else
   {
     console.log("Not Logged In");
+    res.render('login');
   }
-  res.render('login');
 });
 
 app.post("/login",async (req,res)=>{
-  const {username,password} = req.body;
+  if(req.cookies.jwt)
+  {
+    res.send("Logout from existing account");
+    return;
+  }
+
+  const {username,password,rememberme} = req.body;
   if(!username || !password)
   {
     res.send("Enter Username and Password");
@@ -113,7 +128,20 @@ app.post("/login",async (req,res)=>{
     const user = await Account.login(username,password);
     if(user)
     {
-      res.send(user);
+      // res.send(user);
+      // Vaid Username and Password
+      const LToken = createLoginToken(user._id);
+      if(rememberme)
+      {
+        // Set Login Cookie to 5 Days
+        res.cookie("jwt", LToken, { httpOnly: true, maxAge: LOGIN_MAXAGE * 1000 });
+      }
+      else
+      {
+        // Set Login Cookie to session only
+        res.cookie("jwt", LToken, { httpOnly: true});
+      }
+      res.send("Logged in Successfully");
     }
 
   } catch (error) {

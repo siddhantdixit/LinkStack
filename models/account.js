@@ -40,9 +40,9 @@ accountSchema.statics.login = async function (username, password) {
     if (auth) {
       return user;
     }
-    throw Error("Incorrect Username");
+    throw Error("Incorrect Password");
   }
-  throw Error("Incorrect Email");
+  throw Error("Incorrect Username");
 };
 
 
