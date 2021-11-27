@@ -88,6 +88,22 @@ const autoLogin = (req,res) => {
   }
 }
 
+const signVerificationToken = (token) => {
+  try{
+    if(token)
+    {
+      return jwt.verify(token, JWT_VERIFICATION_Secret);
+    }
+    else
+    {
+      return false;
+    }
+  }catch(error)
+  {
+    return false;
+  }
+}
+
 const createLoginToken = (id) => {
   return jwt.sign({ id }, JWT_LOGIN_Secret , {
     expiresIn: LOGIN_MAXAGE,
@@ -270,9 +286,53 @@ app.post("/reset-password",(req,res)=>{
 
 });
 
-app.get("/verify",(req,res)=>{
-
-  
+app.get("/verify",async (req,res)=>{
+  const {token} = req.query;
+  if(token)
+  {
+    console.log(token);
+    const decodedToken = signVerificationToken(token);
+    console.log(decodedToken);
+    if(decodedToken)
+    {
+      console.log("Successfull. . . ");
+      const user = await Account.findOne({_id:decodedToken.id});
+      console.log(user);
+      if(user)
+      {
+        if(user.status == 'active')
+        {
+          res.send("User Already Verified");
+        }
+        else
+        {
+          const transction = await Account.updateOne({_id:decodedToken.id},{status:'active'});
+          console.log(transction);
+          if(transction.acknowledged)
+          {
+            res.send("Account Verified Successfully");
+          }
+          else
+          {
+            res.sendStatus(404);
+          }
+        }
+      }
+      else
+      {
+        res.send(404);
+      }
+    }
+    else
+    {
+      console.log("Invalid Token");
+      res.sendStatus(404);
+    }
+  }
+  else
+  {
+    res.send("Invalid Verification URL");
+  }
 });
 
 
