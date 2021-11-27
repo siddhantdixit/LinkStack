@@ -72,12 +72,17 @@ app.get("/", (req, res) => {
 
 
 const autoLogin = (req,res) => {
-  const token = req.cookies.jwt;
-  if(token)
-  {
-    return jwt.verify(token, JWT_LOGIN_Secret);
-  }
-  else
+  try{
+    const token = req.cookies.jwt;
+    if(token)
+    {
+      return jwt.verify(token, JWT_LOGIN_Secret);
+    }
+    else
+    {
+      return false;
+    }
+  }catch(error)
   {
     return false;
   }
@@ -267,10 +272,48 @@ app.post("/reset-password",(req,res)=>{
 
 app.get("/verify",(req,res)=>{
 
+  
 });
 
 
 
 app.get("/dashboard", async (req, res) => {
+
+  if(!req.cookies.jwt)
+  {
+    //JWT Token Not Present
+    res.redirect("/login");
+    return;
+  }
+
+  const decodedToken = autoLogin(req,res);
+  if(decodedToken)
+  {
+    console.log(decodedToken);
+    const user = await Account.findOne({_id:decodedToken.id});
+    console.log(user);
+    if(user)
+    {
+      if(user.status=='verification')
+      {
+        // Email Not Verified
+        res.send("Welcome to Project Linked List | Email under Verification | Not Active");
+      }
+      else
+      {
+        //Active
+        res.send("Welcome to Project Linked List | Account Active");
+      }
+    }
+    else
+    {
+      res.sendStatus(404);
+    }
+  }
+  else
+  {
+    // Invalid Token
+    res.redirect("/login");
+  }
 
 });
