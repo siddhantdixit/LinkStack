@@ -201,7 +201,7 @@ app.post("/signup",async (req,res)=>{
       // res.send(user_id);
       const VToken = createVerificationToken(user._id);
 
-      sendEmailVerificationLink(email,VToken, (response) => {
+      sendEmailVerificationLink(username,email,VToken, (response) => {
         console.log("==== app.js ======");
         console.log(response);
         if (response == 200) {
@@ -320,7 +320,7 @@ app.get("/verify",async (req,res)=>{
       }
       else
       {
-        res.send(404);
+        res.sendStatus(404);
       }
     }
     else
