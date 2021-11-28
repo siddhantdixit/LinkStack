@@ -34,6 +34,8 @@
         let passwrd_inp = $("#inputPassword").val();
         let remember_inp = $("#inputRemeber").is(':checked');
 
+        //- console.log(validator.isStrongPassword(passwrd_inp));
+
 
         axios.post('/login', {
             username: usernm_inp,
