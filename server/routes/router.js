@@ -12,7 +12,7 @@ const { checkUser, requireAuth } = require('../../middleware/authMiddleware');
 route.all('*',requireAuth);
 route.all('*',checkUser);
 
-route.get('/home',services.homeRoutes);
+route.get('/',services.homeRoutes);
 
 /*
 * @description for add users
