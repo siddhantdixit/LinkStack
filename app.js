@@ -208,10 +208,12 @@ app.post("/signup",async (req,res)=>{
         console.log("==== app.js ======");
         console.log(response);
         if (response == 200) {
-          res.send("Verification Email Successfully Sent!");
+          // res.send("Verification Email Successfully Sent!");
+          res.send({code:'010',msg:"Signup Successfull & Verification Email Successfully Sent!"});
         } else {
           // Account Created Successfully But Failed to Send Verification Email
-          res.sendStatus(404);
+          // res.sendStatus(404);
+          res.send({code:'011',msg:"Signup Successfull but failed to send verification email"});
         }
       });
 
