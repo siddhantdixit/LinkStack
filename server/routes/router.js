@@ -3,11 +3,15 @@ const route=express.Router();
 
 const services=require('../services/render');
 const controller=require('../controller/controller');
+const { checkUser, requireAuth } = require('../../middleware/authMiddleware');
 
 /*
 * @description for Root Route
 * @method GET/
 */
+route.all('*',requireAuth);
+route.all('*',checkUser);
+
 route.get('/home',services.homeRoutes);
 
 /*

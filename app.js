@@ -340,7 +340,7 @@ app.get("/verify",async (req,res)=>{
 });
 
 
-
+/*
 app.get("/dashboard", async (req, res) => {
 
   if(!req.cookies.jwt)
@@ -381,6 +381,7 @@ app.get("/dashboard", async (req, res) => {
   }
 
 });
+*/
 
 app.get("/logout", async(req,res)=>{
   res.clearCookie('jwt');
