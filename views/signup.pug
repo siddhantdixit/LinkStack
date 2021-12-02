@@ -5,11 +5,11 @@
   include partials/header.pug
 
   <body class="text-center">
-    <form class="form-signin">
+    <form id="signupform" class="form-signin">
       <img class="mb-4" src="images/logo.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Register</h1>
 
-      <label for="inputUsername" class="sr-only">Email address</label>
+      <label for="inputUsername" class="sr-only">Username</label>
       <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
 
       <label for="inputEmail" class="sr-only">Email address</label>
@@ -24,4 +24,56 @@
       <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
     </form>
   </body>
+
+  script.
+        $("#signupform").submit(function( event ) {
+        event.preventDefault();
+        
+        let usernm_inp = $("#inputUsername").val();
+        let email_inp = $("#inputEmail").val();
+        let passwrd_inp = $("#inputPassword").val();
+        let cnf_password_inp = $("#confirmPassword").val();
+
+
+        if(passwrd_inp===cnf_password_inp)
+        {
+          console.log();
+          if(validator.isStrongPassword(passwrd_inp))
+          {
+            axios.post('/signup', {
+              username: usernm_inp,
+              password: passwrd_inp,
+              email : email_inp
+            })
+            .then(function (response) {
+              console.log(response);
+              if(response.data.code === '010' || response.data.code === '011')
+              {
+                alert(`Account Registered Successfully!\n Username : ${usernm_inp}\n Email : ${email_inp}\n\n Now you can login.`);
+                window.location.href='/login';
+              }
+              else
+              {
+                alert("Incorrect Username or Password");
+              }
+            })
+            .catch(function (error) {
+              alert("Something Went Wrong! Try Again Later");
+            });
+          }
+          else {
+            let strong_description = "1. Password shoud have atleast 8 characters\n";
+            strong_description+="2. Password should have a lowercase character\n";
+            strong_description+="3. Password should have an uppercase character\n";
+            strong_description+="4. Password should have a number\n";
+            strong_description+="5. Password should have a special character\n";
+            alert(`Please enter a strong password\n\n${strong_description}`);
+          }
+        }
+        else 
+        {
+          alert("Password and Conform Password are not same. Please try again");
+        }
+
+      });
 </html>
