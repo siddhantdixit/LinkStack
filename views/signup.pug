@@ -58,7 +58,8 @@
               }
             })
             .catch(function (error) {
-              alert(`Something Went Wrong! Try Again Later \n ${error}`);
+              let statments = error.response.data;
+              alert(`Something Went Wrong! Try Again Later \n ${JSON.stringify(statments)}`);
             });
           }
           else {
