@@ -21,7 +21,7 @@ user
   .save(user)
   .then(data=>{
     //   res.send(data)
-    res.redirect('/add-user')
+    res.redirect('/dashboard/add-user')
   })
   .catch(err=>{
       res.status(500).send({
