@@ -9,11 +9,12 @@ require("dotenv").config();
 
 //Files
 const Account = require('./models/account');
+const Profile = require('./models/profile');
 const {sendEmailVerificationLink}= require('./utils/emailController');
 
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-
+mongoose.set('autoCreate',false);
 
 const app = express();
 
@@ -198,6 +199,7 @@ app.post("/signup",async (req,res)=>{
   try
   {
     const user = await Account.create({username,password,email});
+    const profile = await Profile.create({userid:user._id});
     if(user)
     {
       console.log("Account Created Successfully ... ");

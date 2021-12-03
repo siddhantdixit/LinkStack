@@ -1,4 +1,6 @@
 var Userdb=require('../model/model');
+const {Link} = require('../../models/link');
+const Profile = require('../../models/profile');
 
 // Create and save new user
 exports.create=(req,res)=>{
@@ -8,26 +10,46 @@ if(!req.body){
     return;
 }
 
-// new user
-const user=new Userdb({
+// // new user
+// const user=new Userdb({
+//     title:req.body.title,
+//     url:req.body.url,
+    
+//     visibility:req.body.visibility
+// })
+
+// // save user in the datebase
+// user
+//   .save(user)
+//   .then(data=>{
+//     //   res.send(data)
+//     res.redirect('/dashboard/add-user')
+//   })
+//   .catch(err=>{
+//       res.status(500).send({
+//           message:err.message||"Some error occured while creating a create operation"
+//       });
+//   });
+
+
+  // new link
+  const mynewLink = new Link({
     title:req.body.title,
     url:req.body.url,
     
     visibility:req.body.visibility
-})
-
-// save user in the datebase
-user
-  .save(user)
-  .then(data=>{
-    //   res.send(data)
-    res.redirect('/dashboard/add-user')
   })
-  .catch(err=>{
-      res.status(500).send({
-          message:err.message||"Some error occured while creating a create operation"
-      });
-  });
+
+  Profile.updateOne({userid:res.locals.myuserid},{$push:{ links : mynewLink}})
+    .then(data=>{
+        //   res.send(data)
+        res.redirect('/dashboard/add-user')
+    })
+    .catch(err=>{
+        res.status(500).send({
+            message:err.message||"Some error occured while creating a create operation"
+        });
+    });
 
 }
 
