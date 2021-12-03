@@ -26,17 +26,20 @@ const checkUser = (req, res, next) => {
   if (token) {
     jwt.verify(token, JWT_LOGIN_Secret, async (err, decodedToken) => {
       if (err) {
+        res.locals.myuserid = null;
         res.locals.myusername = null;
         res.locals.myemail = null;
         next();
       } else {
         let user = await Account.findById(decodedToken.id);
+        res.locals.myuserid = decodedToken.id;
         res.locals.myusername = user.username;
         res.locals.myemail = user.email;
         next();
       }
     });
   } else {
+    res.locals.myuserid = null;
     res.locals.myusername = null;
     res.locals.myemail = null;
     next();
