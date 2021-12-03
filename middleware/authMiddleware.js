@@ -35,7 +35,14 @@ const checkUser = (req, res, next) => {
         res.locals.myuserid = decodedToken.id;
         res.locals.myusername = user.username;
         res.locals.myemail = user.email;
-        next();
+        if(user.status==='verification')
+        {
+          res.render('dashboard/mailverification.ejs');
+        }
+        else
+        {
+          next();
+        }
       }
     });
   } else {
