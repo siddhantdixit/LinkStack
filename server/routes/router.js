@@ -2,7 +2,8 @@ const express=require('express');
 const route=express.Router();
 
 const services=require('../services/render');
-const controller=require('../controller/controller');
+const linkcontroller=require('../controller/linksController');
+const profilecontroller = require('../controller/profileController');
 const { checkUser, requireAuth } = require('../../middleware/authMiddleware');
 
 /*
@@ -15,23 +16,27 @@ route.all('*',checkUser);
 route.get('/',services.homeRoutes);
 
 /*
-* @description for add users
+* @description for add links
 * @method GET/add-link
 */
 route.get('/add-link',services.add_user);
 
 /*
-* @description for update users
+* @description for update links
 * @method GET/update-link
 */
 route.get('/update-link',services.update_user);
 
 
-// API
-route.post('/api/links',controller.create);
-route.get('/api/links',controller.find);
-route.put('/api/links/:id',controller.update);
-route.delete('/api/links/:id',controller.delete);
+// Links API
+route.post('/api/links',linkcontroller.create);
+route.get('/api/links',linkcontroller.find);
+route.put('/api/links/:id',linkcontroller.update);
+route.delete('/api/links/:id',linkcontroller.delete);
 
+
+// Profile API (Title, Bio)
+route.get('/api/profile',profilecontroller.getProfile);
+route.put('/api/profile',profilecontroller.updateProfile);
 
  module.exports=route
