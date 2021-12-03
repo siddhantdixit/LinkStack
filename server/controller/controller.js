@@ -1,4 +1,3 @@
-var Userdb=require('../model/model');
 const {Link} = require('../../models/link');
 const Profile = require('../../models/profile');
 

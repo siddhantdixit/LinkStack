@@ -1,6 +1,5 @@
 const axios=require('axios');
 const { getAPIHostURL } = require('../../config');
-var Userdb=require('../model/model');
 const Profile = require('../../models/profile');
 
 
