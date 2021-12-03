@@ -390,3 +390,24 @@ app.get("/logout", async(req,res)=>{
   res.clearCookie('jwt');
   res.redirect("/login");
 });
+
+
+//User Public Page
+app.get('/:username',(req,res,next)=>{
+
+
+  //Check if username is from these links then allow to pass
+  const app_links = [
+    'favicon.ico',
+    'signin.css',
+  ];
+  console.log(req.params);
+
+  next();
+});
+
+app.use((req,res)=>{
+  // res.send("We coudnout found anything!");
+  res.status(404);
+  res.render("404page");
+});
