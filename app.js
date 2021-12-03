@@ -14,7 +14,6 @@ const {sendEmailVerificationLink}= require('./utils/emailController');
 
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-mongoose.set('autoCreate',false);
 
 const app = express();
 

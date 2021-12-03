@@ -17,7 +17,7 @@ const VERIFICATION_MAXAGE = (24 * 60 * 60 ) // 1 day
 
 
 // Database URL
-const dbURI = 'mongodb://localhost:27017/ProjectLinkedList'
+const dbURI = 'mongodb+srv://linkedlistadmin:j7q4Git1xn6w9l3G@cluster0.syxy2.mongodb.net/ProjectLinkedList?retryWrites=true&w=majority'
 
 const getAPIHostURL = (req)=>{
     return `${req.headers['x-forwarded-proto']||'http'}://${req.headers.host}`;
