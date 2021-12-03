@@ -9,11 +9,11 @@ require("dotenv").config();
 
 //Files
 const Account = require('./models/account');
+const Profile = require('./models/profile');
 const {sendEmailVerificationLink}= require('./utils/emailController');
 
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-
 
 const app = express();
 
@@ -66,6 +66,7 @@ app.get("/", async (req, res) => {
 });
 
 */
+app.use('/dashboard',require('./server/routes/router'));
 
 app.get("/", (req, res) => {
   res.render('index');
@@ -197,6 +198,7 @@ app.post("/signup",async (req,res)=>{
   try
   {
     const user = await Account.create({username,password,email});
+    const profile = await Profile.create({userid:user._id});
     if(user)
     {
       console.log("Account Created Successfully ... ");
@@ -341,7 +343,7 @@ app.get("/verify",async (req,res)=>{
 });
 
 
-
+/*
 app.get("/dashboard", async (req, res) => {
 
   if(!req.cookies.jwt)
@@ -382,6 +384,7 @@ app.get("/dashboard", async (req, res) => {
   }
 
 });
+*/
 
 app.get("/logout", async(req,res)=>{
   res.clearCookie('jwt');

@@ -1,0 +1,39 @@
+<!-- include header -->
+<%-include('include/_header')%>
+<!-- /include header -->
+
+ <!-- Main Site -->
+ <main id="site-main">
+    <div class="container">
+       <div class="box-nav d-flex justify-between">
+           <a href="/dashboard/add-user" class="border-shadow">
+               <span class="text-gradient">New link <i class="fas fa-plus"></i></span>
+           </a>
+       </div>
+
+
+      <!-- form handling -->
+       <form action="/" method="POST">
+           <table class="table">
+               <thead class="thead-dark">
+                   <tr>
+                       <th>ID</th>
+                       <th>Title</th>
+                       <th>URL</th>
+                       <!-- <th></th> -->
+                       <!-- <th>Visibility</th> -->
+                       <th>Action</th>
+                   </tr>
+               </thead>
+               <tbody>
+                <%-include('include/_show')%>
+               </tbody>
+           </table>
+       </form>
+    </div>
+</main>
+<!-- /Main Site -->
+
+<!-- include footer -->
+<%-include('include/_footer')%>
+<!-- /include footer -->
