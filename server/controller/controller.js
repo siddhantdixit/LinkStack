@@ -57,23 +57,24 @@ if(!req.body){
 exports.find=(req,res)=>{
 
    if(req.query.id){
-       const id=req.query.id;
+       const linkid=req.query.id;
 
-       Userdb.findById(id)
+    //    Pr.findById(id)
+    Profile.findOne({userid:res.locals.myuserid})
         .then(data=>{
             if(!data){
-                res.status(404).send({message:"Not found user with id:"+id})
+                res.status(404).send({message:"Not found user with id:"+linkid})
             }else {
-                res.send(data)
+                res.send(data.links.id(linkid));
             }
         })
         .catch(err=>{
-            res.status(500).send({message:"Error retrieving user with id"+id})
+            res.status(500).send({message:"Error retrieving user with id"+linkid})
         })
    }else{
-    Userdb.find()
+    Profile.findOne({userid:res.locals.myuserid})
     .then(user=>{
-        res.send(user)
+        res.send(user.links)
     })
     .catch(err=>{
         res.status(500).send({message:err.message||"Error Occurred while retriving user information"})
@@ -92,7 +93,25 @@ if(!req.body){
 }
 
 const id=req.params.id;
-Userdb.findByIdAndUpdate(id,req.body,{useFindAndModify:false})
+// Userdb.findByIdAndUpdate(id,req.body,{useFindAndModify:false})
+
+const mynewLink = new Link({
+    title:req.body.title,
+    url:req.body.url,
+    visibility:req.body.visibility
+});
+
+console.log(id);
+console.log(mynewLink);
+
+Profile.findOneAndUpdate(
+    {userid:res.locals.myuserid,"links._id":id},
+    {
+        "$set":{
+            "links.$":mynewLink
+        }
+    }
+)
 .then(data=>{
     if(!data){
         res.status(404).send({message:`Cannot update user with ${id}.Maybe user not found!`})

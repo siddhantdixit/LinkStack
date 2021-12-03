@@ -1,6 +1,7 @@
 const axios=require('axios');
 const { getAPIHostURL } = require('../../config');
 var Userdb=require('../model/model');
+const Profile = require('../../models/profile');
 
 
 exports.homeRoutes=(req,res)=>{
@@ -15,9 +16,9 @@ exports.homeRoutes=(req,res)=>{
     // })
 
 
-    Userdb.find()
+    Profile.findOne({userid:res.locals.myuserid})
     .then(user=>{
-        res.render('dashboard/index.ejs',{users:user});
+        res.render('dashboard/index.ejs',{users:user.links});
     })
     .catch(err=>{
         res.status(500).send({message:err.message||"Error Occurred while retriving user information"})
@@ -29,9 +30,20 @@ exports.add_user=(req,res)=>{
 }
 
 exports.update_user=(req,res)=>{
-    axios.get(`${getAPIHostURL(req)}/dashboard/api/users`,{params:{id:req.query.id}})
+
+    // Profile.findOne({userid:res.locals.myuserid})
+    //     .then(data=>{
+    //         if(!data){
+    //             res.status(404).send({message:"Not found user with id:"+linkid})
+    //         }else {
+    //             res.send(data.links.id(linkid));
+    //         }
+    //     })
+
+
+    Profile.findOne({userid:res.locals.myuserid})
       .then(function(userdata){
-          res.render("dashboard/update_user.ejs",{user:userdata.data})
+          res.render("dashboard/update_user.ejs",{user:userdata.links.id(req.query.id)})
       })
     .catch(err=>{
         res.send(err);
