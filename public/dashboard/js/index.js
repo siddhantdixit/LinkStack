@@ -18,7 +18,7 @@ $('#update_user').submit(function(event){
     console.log(data)
 
     var request={
-        "url":`/dashboard/api/users/${data.id}`,
+        "url":`/dashboard/api/links/${data.id}`,
         "method":"PUT",
         "data":data
     }
@@ -33,7 +33,7 @@ $ondelete.click(function(){
     var id=$(this).attr("data-id")
 
     var request={
-        "url":`/dashboard/api/users/${id}`,
+        "url":`/dashboard/api/links/${id}`,
         "method":"DELETE"
     } 
 

@@ -16,22 +16,22 @@ route.get('/',services.homeRoutes);
 
 /*
 * @description for add users
-* @method GET/add-user
+* @method GET/add-link
 */
-route.get('/add-user',services.add_user);
+route.get('/add-link',services.add_user);
 
 /*
 * @description for update users
-* @method GET/update-user
+* @method GET/update-link
 */
-route.get('/update-user',services.update_user);
+route.get('/update-link',services.update_user);
 
 
 // API
-route.post('/api/users',controller.create);
-route.get('/api/users',controller.find);
-route.put('/api/users/:id',controller.update);
-route.delete('/api/users/:id',controller.delete);
+route.post('/api/links',controller.create);
+route.get('/api/links',controller.find);
+route.put('/api/links/:id',controller.update);
+route.delete('/api/links/:id',controller.delete);
 
 
  module.exports=route

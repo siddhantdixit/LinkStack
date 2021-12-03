@@ -22,7 +22,7 @@ if(!req.body){
 //   .save(user)
 //   .then(data=>{
 //     //   res.send(data)
-//     res.redirect('/dashboard/add-user')
+//     res.redirect('/dashboard/add-link')
 //   })
 //   .catch(err=>{
 //       res.status(500).send({
@@ -42,7 +42,7 @@ if(!req.body){
   Profile.updateOne({userid:res.locals.myuserid},{$push:{ links : mynewLink}})
     .then(data=>{
         //   res.send(data)
-        res.redirect('/dashboard/add-user')
+        res.redirect('/dashboard/add-link')
     })
     .catch(err=>{
         res.status(500).send({
