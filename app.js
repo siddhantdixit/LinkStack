@@ -411,7 +411,8 @@ app.get('/:username',(req,res,next)=>{
         //Userfound. Now get his profile to search
         Profile.findOne({userid:data._id})
           .then((profile_data)=>{
-            res.send(profile_data);
+            // res.send(profile_data);
+            res.render('userpage/index.ejs',{ profile:profile_data,myusername:data.username,myemail:data.email});
           })
           .catch((err)=>{
             next();
