@@ -162,36 +162,17 @@
             </svg>
         </div>
         <div class="username">
-            <h3><%=myusername%> <%=myemail%> <%=profile%></h3>
+            <h3><%=myusername%></h3>
         </div>
-        <div class="userbio" style="font-family:'Times New Roman', Times, serif; font-weight: bold;">student</div>
+        <div class="userbio" style="font-family:'Times New Roman', Times, serif; font-weight: bold;">bio</div>
         <div class="userbtn">
 
-            
-            <a class="btn" target="Blank" href="#">
-                <p> Address</p>
-            </a>
-            <a class="btn" target="Blank" href="#">
-                <p>Facebook Profile</p>
-            </a>
-            <a class="btn" target="Blank" href="#">
-                <p>Instagram profile</p>
-            </a>
-            <a class="btn" target="Blank" href="#">
-                <p>Twitter Profile</p>
-            </a>
-            <a class="btn" target="Blank" href="#">
-                <p>Github profile</p>
-            </a>
-            <a class="btn" target="Blank" href="#">
-                <p>Linkedin Profile</p>
-            </a>
-            <a class="btn" target="Blank" href="#">
-                <p>Skype Profile </p>
-            </a>
-            <a class="btn" target="Blank" href="#">
-                <p>Signal Profile</p>
-            </a>
+            <% for(var i=0; i < profile.links.length; i++) { %>
+                <a class="btn" target="Blank" href="<%=profile.links[i].url%>">
+                    <p><%=profile.links[i].title%></p>
+                </a>
+            <% } %>
+
         </div>
         <!-- <div class="box">
             <i class="bi bi-envelope"></i>
