@@ -395,15 +395,32 @@ app.get("/logout", async(req,res)=>{
 //User Public Page
 app.get('/:username',(req,res,next)=>{
 
+  console.log("============ USER SEARCH =========="); 
+  const {username} = req.params;
 
-  //Check if username is from these links then allow to pass
-  const app_links = [
-    'favicon.ico',
-    'signin.css',
-  ];
-  console.log(req.params);
-
-  next();
+  //Finding User in Database
+  Account.findOne({username:username})
+    .then((data)=>{
+      if(!data)
+      {
+        //Usernot found
+        next();
+      }
+      else
+      {
+        //Userfound. Now get his profile to search
+        Profile.findOne({userid:data._id})
+          .then((profile_data)=>{
+            res.send(profile_data);
+          })
+          .catch((err)=>{
+            next();
+          })
+      }
+    })
+    .catch((err)=>{
+      next();
+    })
 });
 
 app.use((req,res)=>{
