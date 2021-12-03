@@ -17,7 +17,7 @@ exports.homeRoutes=(req,res)=>{
 
     Userdb.find()
     .then(user=>{
-        res.render('dashboard/index.ejs',{users:user});
+        res.render('dashboard/mailverification.ejs',{users:user});
     })
     .catch(err=>{
         res.status(500).send({message:err.message||"Error Occurred while retriving user information"})
