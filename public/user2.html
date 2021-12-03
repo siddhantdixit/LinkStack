@@ -27,6 +27,7 @@
     .username {
         display: flex;
         flex-direction: column;
+        font-weight: bolder;
     }
     
     .userlogo svg {
@@ -42,10 +43,10 @@
         cursor: pointer;
     }
     
-    .usersbtn {
+    .userbtn {
         display: flex;
         flex-direction: column;
-        margin-top: 23px;
+        margin-top: 20px;
         width: 100%;
     }
     
@@ -70,10 +71,9 @@
             width: 95%;
         }
         .box i {
-            margin: 20px 10px 20px 10px;
+            margin: 15px 14px;
+            font-size: 40px;
             cursor: pointer;
-            height: 20px;
-            width: 200px;
             box-sizing: border-box;
         }
         .box {
@@ -91,10 +91,9 @@
             width: 98%;
         }
         .box i {
-            margin: 20px 10px 20px 10px;
+            font-size: 40px;
+            margin: 15px 14px;
             cursor: pointer;
-            height: 20px;
-            width: 200px;
             box-sizing: border-box;
         }
         .box {
@@ -134,14 +133,16 @@
     }
     
     .box i {
-        margin: 20px 10px 20px 10px;
-        height: 40px;
-        width: 40px;
+        font-size: 40px;
+        margin: 15px 14px;
         cursor: pointer;
         color: teal;
-        height: 40px;
-        width: 40px;
         box-sizing: border-box;
+    }
+    
+    .box i:hover {
+        color: rgb(26, 56, 56);
+        border: 1px solid white;
     }
 </style>
 
@@ -155,10 +156,10 @@
             </svg>
         </div>
         <div class="username">
-            <h3>@user</h3>
+            <h3>@neel_yad</h3>
         </div>
-        <div class="userbio">student</div>
-        <div class="usersbtn">
+        <div class="userbio" style="font-family:'Times New Roman', Times, serif; font-weight: bold;">student</div>
+        <div class="userbtn">
 
             <a class="btn" target="Blank" href="#" style="text-decoration: none;">
                 <p> Address</p>
