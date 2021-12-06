@@ -1,15 +1,22 @@
-<!-- include header -->
-<%-include('include/_header')%>
-<!-- /include header -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!doctype html>
+<html lang="en">
 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
 <style>
     #handle_form {
         display: flex;
         flex-direction: column;
         width: 55%;
-        margin-top: 2px;
+        margin-top: 23px;
         margin-bottom: 23px;
     }
     
@@ -33,22 +40,11 @@
     .form-label {
         margin-bottom: 0.15rem;
     }
-    
 </style>
 
- <!-- Main Site -->
- <main id="site-main">
-    <div class="container">
-       <div class="box-nav d-flex justify-between">
-           <div class="filter">
-               <a href="/dashboard"><i class="fas fa-angle-double-left"></i> All Links</a>
-           </div>
-       </div>
-        <div class="form-title text-center">
-            <h2 class="text-dark">Handles</h2>
-        </div>
-     <!-- add user form -->
-      <div class="form_">
+<body>
+    <div class="form_">
+        <h1>Handle</h1>
         <form id="handle_form">
             <div class="form_elem">
                 <label for="exampleInputEmail1" class="form-label">Email address:</label>
@@ -84,7 +80,7 @@
             </div>
             <div class="form_elem">
                 <label for="clubhouse_url" class="form-label">Clubhouse URL</label>
-                <input type="url" placeholder="https://clubhouse.com/@profile" class="form-control" id="clubhouse_url">
+                <input type="password" placeholder="https://clubhouse.com/@profile" class="form-control" id="clubhouse_url">
             </div>
             <div class="form_elem">
                 <label for="github_url" class="form-label">Github URL</label>
@@ -148,11 +144,17 @@
             </div>
         </form>
     </div>
-    </div>
-</main>
-<!-- /Main Site -->
 
+    <!-- Optional JavaScript; choose one of the two! -->
 
-<!-- include footer -->
-<%-include('include/_footer')%>
-<!-- /include footer -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
