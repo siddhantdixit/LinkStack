@@ -24,6 +24,9 @@ exports.homeRoutes=(req,res)=>{
     })
 }
 
+exports.appearance=(req,res)=>{
+    res.render('dashboard/appearance.ejs')
+}
 exports.add_user=(req,res)=>{
     res.render('dashboard/add_user.ejs');
 }

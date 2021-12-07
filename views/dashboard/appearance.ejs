@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+    
+</head>
+<body>
+     <!-- Header -->
+      <header id="header">
+          <nav>
+              <div class="container">
+                  <div class="text-center">
+                      <a href="#" class="nav-brand text-dark">Dashboard</a>
+                      <a href="/logout" class="border-shadow" style="float: right;">
+                        <span class="text-gradient">Logout <i class="fas fa-sign-out-alt"></i></span>
+                      </a>    
+                  </div>
+                  <div>
+                      <a> <%=myusername%> </a>
+                      <a style="float: right;"> <%=myemail%> </a>
+                  </div>
+              </div>
+          </nav>
+      </header>
+     <!-- /Header -->
+
+     <!-- Main Site -->
+ <main id="site-main">
+    <div class="container">
+       <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/dashboard"><i class="fas fa-angle-double-left"></i> All Link</a>
+           </div>
+       </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">Apperance</h2>
+            <span class="text-light">Use the below form to edit the info</span>
+        </div>
+
+      <!-- add user form -->
+       <!-- form handling -->
+ <form method="POST" id="update_user">
+    <div class="new_user">
+        <div class="form-group">
+            
+        </div>
+        <div class="form-group">
+            <label for="profileTitle" class="text-light">Profile Title</label>
+            
+            <input type="text" name="profileTitle" value="" placeholder="Socail/Business/Creator/..">
+        </div>
+        <div class="form-group">
+           <label for="bio" class="text-light">Bio</label><br>
+           <textarea   name="bio" placeholder="Enter a bio description to appear on your profile" style="padding-top: 0.1em; margin-top: 0.6em; margin: auto;" ></textarea>
+       </div>
+      
+       <div class="form-group">
+           <button type="submit" class="btn text-dark update">Save</button>
+       </div>
+    </div>   
+   </form>
+    </div>
+</main>
+<!-- /Main Site -->
+
+
+<!-- include footer -->
+<%-include('include/_footer')%>
+<!-- /include footer -->
