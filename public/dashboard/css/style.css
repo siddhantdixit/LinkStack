@@ -157,6 +157,7 @@ border-color: #32383e;
 }
 
 #update_user .form-group input[type="text"],
+#update_user .form-group textarea,
 #add_user .form-group input[type="text"]{
     width: 100%;
     padding: .6em 1em;
