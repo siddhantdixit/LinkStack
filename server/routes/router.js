@@ -2,8 +2,9 @@ const express=require('express');
 const route=express.Router();
 
 const services=require('../services/render');
-const linkcontroller=require('../controller/linksController');
 const profilecontroller = require('../controller/profileController');
+const linkcontroller=require('../controller/linkController');
+const handlescontroller = require('../controller/handlesController');
 const { checkUser, requireAuth } = require('../../middleware/authMiddleware');
 
 /*
@@ -16,13 +17,13 @@ route.all('*',checkUser);
 route.get('/',services.homeRoutes);
 
 /*
-* @description for add links
+* @description for add users
 * @method GET/add-link
 */
 route.get('/add-link',services.add_user);
 
 /*
-* @description for update links
+* @description for update users
 * @method GET/update-link
 */
 route.get('/update-link',services.update_user);
@@ -31,15 +32,19 @@ route.get('/update-link',services.update_user);
 route.get('/handles',services.handles);
 
 
+
+// Profile API (Title, Bio)
+route.get('/api/profile',profilecontroller.getProfile);
+route.put('/api/profile',profilecontroller.updateProfile);
 // Links API
 route.post('/api/links',linkcontroller.create);
 route.get('/api/links',linkcontroller.find);
 route.put('/api/links/:id',linkcontroller.update);
 route.delete('/api/links/:id',linkcontroller.delete);
 
+// Handles API
 
-// Profile API (Title, Bio)
-route.get('/api/profile',profilecontroller.getProfile);
-route.put('/api/profile',profilecontroller.updateProfile);
+route.get('/api/handles',handlescontroller.getHandles);
+route.post('/api/handles',handlescontroller.updateHandles);
 
  module.exports=route
