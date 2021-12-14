@@ -240,7 +240,7 @@ border-color: #32383e;
   position: relative;
   height: 110px;
   width: 110px;
-  margin: 50px;
+  margin: auto;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 1px 1px 15px -5px black;
