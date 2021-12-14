@@ -52,23 +52,23 @@
         <form id="handle_form">
             <div class="form_elem">
                 <label for="exampleInputEmail1" class="form-label">Email address:</label>
-                <input type="email" placeholder="your@emailaddress.com" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" placeholder="your@emailaddress.com" class="form-control" id="email_url" aria-describedby="emailHelp">
             </div>
             <div class="form_elem">
                 <label for="facebook_page_url" class="form-label">Facebook Page URL</label>
-                <input type="url" placeholder="https://facebook.com/facebookpageurl" class="form-control" id="facebook_page_url">
+                <input type="url" placeholder="https://facebook.com/facebookpageurl" class="form-control" id="facebook_url">
             </div>
             <div class="form_elem">
                 <label for="twitter_link" class="form-label">Twitter Handle</label>
-                <input type="url" placeholder="@yourtwitterhandle" class="form-control" id="twitter_link">
+                <input type="url" placeholder="@yourtwitterhandle" class="form-control" id="twitter_url">
             </div>
             <div class="form_elem">
                 <label for="instagram_username" class="form-label">Instagram Username</label>
-                <input type="url" placeholder="@instagram username" class="form-control" id="instagram_username">
+                <input type="url" placeholder="@instagram username" class="form-control" id="instagram_url">
             </div>
             <div class="form_elem">
                 <label for="youTube_url" class="form-label">YouTube URL</label>
-                <input type="url" placeholder="https://youtube.com/channel/youtubechannelurl" class="form-control" id="youTube_url">
+                <input type="url" placeholder="https://youtube.com/channel/youtubechannelurl" class="form-control" id="youtube_url">
             </div>
             <div class="form_elem">
                 <label for="soundcloud_url" class="form-label">SoundCloud URL</label>
@@ -112,7 +112,7 @@
             </div>
             <div class="form_elem">
                 <label for="tiktok_username" class="form-label">TikTok Username</label>
-                <input type="url" placeholder="@tiktok_username" class="form-control" id="tiktok_username">
+                <input type="url" placeholder="@tiktok_username" class="form-control" id="tiktok_url">
             </div>
             <div class="form_elem">
                 <label for="spotify_url" class="form-label">Spotify URL</label>
@@ -128,11 +128,11 @@
             </div>
             <div class="form_elem">
                 <label for="applemusic_url" class="form-label">Apple Music URL</label>
-                <input type="url" placeholder="https://music.appke.com/us/album/youralbum" class="form-control" id="applemusic_url">
+                <input type="url" placeholder="https://music.appke.com/us/album/youralbum" class="form-control" id="apple_music_url">
             </div>
             <div class="form_elem">
                 <label for="appleappstore_url" class="form-label">Apple App Store URL</label>
-                <input type="url" placeholder="https://apps.apple.com/us/yourapp/id515541" class="form-control" id="appleappstore_url">
+                <input type="url" placeholder="https://apps.apple.com/us/yourapp/id515541" class="form-control" id="apple_playstore_url">
             </div>
             <div class="form_elem">
                 <label for="androidplaystore_url" class="form-label">Android Play Store URL</label>
@@ -140,20 +140,98 @@
             </div>
             <div class="form_elem">
                 <label for="Payment_url" class="form-label">Payment URL</label>
-                <input type="url" placeholder="https://venmo.com/yourusername" class="form-control" id="Payment_url">
+                <input type="url" placeholder="https://venmo.com/yourusername" class="form-control" id="payment_url">
             </div>
-            <div class="form_elem">
-                <label for="tiktok_username" class="form-label">TikTok Username</label>
-                <input type="url" placeholder="@tiktok_username" class="form-control" id="tiktok_username">
-            </div>
+
             
-            <button style="margin-top: 30px;margin-bottom: 50px;height: 50px;" type="button" class="btn btn-success">Save</button>
+            <button id="save_btn" style="margin-top: 30px;margin-bottom: 50px;height: 50px;" type="button" class="btn btn-success">Save</button>
         </form>
     </div>
     </div>
 </main>
 <!-- /Main Site -->
+<script>
+        let handles_data;
 
+        const updateHandlesForm = (data)=>{
+            console.log("==== UPDATING HANDLES FORM =====");
+            for(let handl in data)
+            {
+                $(`#${handl}_url`).val(data[handl]);
+            }
+        }
+
+        const getChangedHandles = ()=>{
+            let chnged_handles = {};
+            $("input").each((index,elem)=>{
+                let elem_id = $(elem).attr('id');
+                let handle_name = elem_id.substring(0,elem_id.length-4);
+                
+                
+                // if((handle_name in handles_data) && (handles_data[handle_name]!=$(elem).val()))
+                // {
+                //     chnged_handles[handle_name] = $(elem).val();
+                // }
+
+
+                if((handle_name in handles_data))
+                {
+                    //Field Changed By User
+                    if(handles_data[handle_name]!=$(elem).val())
+                    {
+                        chnged_handles[handle_name] = $(elem).val();
+                    }
+                    //Field not Changed by user
+                }
+                else
+                {
+                    //Not Fetched
+                    if($(elem).val())
+                    {
+                        chnged_handles[handle_name] = $(elem).val();
+                    }
+                }
+
+            });
+            console.log(chnged_handles);
+            return chnged_handles;
+        }
+        
+        $(document).ready(function () {
+            console.log("ready!");
+            $.get("/dashboard/api/handles", function (data, status) {
+                // console.log(data);
+                console.log(status);
+                if(status==='success')
+                {
+                    updateHandlesForm(data);
+                }
+                else
+                {
+                    alert("Something went wrong! Please Try Again Later!");
+                }
+                handles_data = data;
+            });
+        });
+
+        $("#save_btn").click(function(){
+            console.log("Pressed Save Button");
+            let new_handles = getChangedHandles();
+            if(!jQuery.isEmptyObject(new_handles))
+            {
+                $.post("/dashboard/api/handles",new_handles,function(data,status){
+                    console.log(data);
+                    console.log(status);
+                    if(status==='success')
+                    {
+                        alert('Data Updated Successfully');
+                        location.reload();
+                    }
+                });
+            }
+
+        });
+</script>
 
 <!-- include footer -->
 <%-include('include/_footer')%>
