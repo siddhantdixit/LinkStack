@@ -1,8 +1,8 @@
 <% for(var i=0;i<users.length;i++){%>
 <tr>
     <td><%= i+1%></td>
-    <td><%= users[i].title%></td>
-    <td><a style="text-decoration: none; color: black;" target="_blank"  href="<%= users[i].url%>"><%= users[i].url%></a></td>
+    <td style="max-width: 200px; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;"><%= users[i].title%></td>
+    <td style="max-width: 700px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;"><a style="text-decoration: none; color: black;" target="_blank"  href="<%= users[i].url%>"><%= users[i].url%></a></td>
     <!-- <td><%= users[i].gender%></td> -->
     <!-- <td><%= users[i].visibility%></td> -->
     <td>
