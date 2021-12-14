@@ -28,6 +28,9 @@ route.get('/add-link',services.add_user);
 route.get('/update-link',services.update_user);
 
 
+route.get('/handles',services.handles);
+
+
 // Links API
 route.post('/api/links',linkcontroller.create);
 route.get('/api/links',linkcontroller.find);
