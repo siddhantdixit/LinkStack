@@ -162,9 +162,13 @@
             </svg>
         </div>
         <div class="username">
-            <h3><%=myusername%></h3>
+            <% if(profile.title) { %>
+                <h3><%= profile.title %></h3>
+            <% } else { %>
+                <h3><%= myusername %></h3>
+            <% } %>
         </div>
-        <div class="userbio" style="font-family:'Times New Roman', Times, serif; font-weight: bold;">bio</div>
+        <div class="userbio" style="font-family:'Times New Roman', Times, serif; font-weight: bold;"> <%= profile.bio %> </div>
         <div class="userbtn">
 
             <% for(var i=0; i < profile.links.length; i++) { %>
@@ -174,8 +178,20 @@
             <% } %>
 
         </div>
-        <!-- <div class="box">
-            <i class="bi bi-envelope"></i>
+        <div class="box">
+            <% var userhandles = Object.entries(profile.handles); %>
+
+            <% for(val in userhandles) { %>
+                <% if(userhandles[val][1]!=null) { %>
+
+                    <a href="<%= userhandles[val][1] %>" target="_blank"><i class="bi bi-<%= userhandles[val][0] %>"></i></a>
+
+
+                <% } %>
+            <% } %>
+            
+
+            <!-- <a href="https://www.google.com"><i class="bi bi-envelope"></i></a>
             <i class="bi bi-facebook"></i>
             <i class="bi bi-instagram"></i>
             <i class="bi bi-twitter"></i>
@@ -183,8 +199,8 @@
             <i class="bi bi-linkedin"></i>
             <i class="bi bi-skype"></i>
             <i class="bi bi-signal"></i>
-            <i class="bi bi-discord"></i>
-        </div> -->
+            <i class="bi bi-discord"></i> -->
+        </div>
     </div>
 </body>
 
