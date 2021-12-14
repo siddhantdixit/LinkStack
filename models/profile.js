@@ -47,6 +47,7 @@ const profileSchema = new mongoose.Schema({
         payment: { type: String },
         etsy: { type: String },
         poshmark: { type: String },
+        github: { type: String },
     }
 })
 

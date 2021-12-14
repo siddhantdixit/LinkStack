@@ -40,7 +40,8 @@ exports.updateHandles = (req, res) => {
         apple_playstore,
         payment,
         etsy,
-        poshmark
+        poshmark,
+        github
     } = req.body;
 
     const inputHandles = {
@@ -71,7 +72,8 @@ exports.updateHandles = (req, res) => {
         'handles.apple_playstore': apple_playstore ,
         'handles.payment': payment ,
         'handles.etsy': etsy ,
-        'handles.poshmark': poshmark
+        'handles.poshmark': poshmark,
+        'handles.github': github
     }
     console.log(inputHandles);
     Profile.updateOne({ userid: res.locals.myuserid }, { $set: inputHandles })
