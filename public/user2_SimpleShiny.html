@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <title>Hello, world!</title>
+</head>
+<style>
+    body{
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1000%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M0%2c445.117C81.296%2c429.018%2c151.485%2c388.898%2c222.845%2c346.754C297.061%2c302.924%2c381.485%2c268.489%2c425.028%2c194.104C470.402%2c116.591%2c484.583%2c20.796%2c464.96%2c-66.851C445.971%2c-151.667%2c374.82%2c-209.813%2c319.574%2c-276.912C262.758%2c-345.919%2c223.155%2c-442.852%2c136.697%2c-465.548C50.374%2c-488.209%2c-30.967%2c-421.581%2c-114.789%2c-390.937C-192.564%2c-362.503%2c-284.131%2c-355.759%2c-337.291%2c-292.265C-390.233%2c-229.031%2c-381.476%2c-138.155%2c-394.596%2c-56.734C-407.968%2c26.251%2c-432.315%2c107.251%2c-414.917%2c189.486C-394.639%2c285.333%2c-371.246%2c396.494%2c-287.837%2c447.883C-204.457%2c499.253%2c-96.068%2c464.141%2c0%2c445.117' fill='%230b2239'%3e%3c/path%3e%3cpath d='M1440 1151.13C1549.559 1144.388 1638.334 1071.513 1732.739 1015.51 1830.846 957.3109999999999 1959.387 922.519 2003.03 817.127 2046.591 711.932 1978.71 597.05 1951.84 486.408 1927.653 386.813 1905.896 289.768 1853.56 201.64800000000002 1792.285 98.476 1739.286-33.37800000000004 1623.792-65.93899999999996 1508.261-98.50999999999999 1400.562 0.6150000000000091 1287.9569999999999 42.188999999999965 1184.1680000000001 80.50799999999998 1065.433 89.27600000000001 988.37 168.66000000000003 909.623 249.779 888.125 366.63300000000004 865.476 477.396 841.578 594.265 804.845 718.932 853.583 827.808 902.413 936.887 1018.498 995.318 1123.155 1053.021 1221.978 1107.507 1327.365 1158.0610000000001 1440 1151.13' fill='%23113255'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1000'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+    } 
+    .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 700px;
+        justify-content: center;
+    }
+    
+    .userlogo {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .username {
+        display: flex;
+        flex-direction: column;
+        font-weight: bolder;
+    }
+    
+    .userlogo svg {
+        margin: 25px 0px;
+        cursor: pointer;
+    }
+    
+    .container h3 {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1.5;
+        overflow: hidden;
+        cursor: pointer;
+        color: azure;
+    }
+
+    
+    .userbtn {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        width: 100%;
+    }
+    
+    .btn {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        font-size: 18px;
+        margin-top: 10px;
+        padding: 13px 0px;
+        width: 100%;
+        background:transparent;
+        text-align: center;
+        border: 1px solid wheat;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        color:white;
+    }
+    
+    @media screen and (max-width: 200px) {
+        .container {
+            width: 95%;
+        }
+        .box i {
+            margin: 15px 14px;
+            font-size: 40px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        .box {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    
+    @media screen and (max-width: 800px) {
+        .container {
+            width: 98%;
+        }
+        .box i {
+            font-size: 40px;
+            margin: 15px 14px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        .box {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    
+    .btn p {
+        position: relative;
+        hyphens: none;
+        padding: 0px;
+        margin: 0px;
+        line-height: 1.5;
+        width: 100%;
+    }
+    
+    .btn:hover {
+        size: 20px;
+        font-weight: bold;
+        color: rgb(28, 28, 61);
+        background-color: rgb(206, 206, 240);
+        
+
+    }
+    
+    .box {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .box i {
+        font-size: 40px;
+        margin: 15px 14px;
+        cursor: pointer;
+        padding: 0px 2px;
+        color:white;
+        box-sizing: border-box;
+    }
+    
+    .box i:hover { 
+        color: rgb(28, 28, 61);
+        background-color: rgb(206, 206, 240);
+        border-radius: 15px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="userlogo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="rgb(253, 237, 237)" class="bi bi-person-circle " viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                <path fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+            </svg>
+        </div>
+        <div class="username">
+            <h3>@neel_yad</h3>
+        </div>
+        <div class="userbio" style="font-family:'Times New Roman', Times, serif; font-weight: bold; color:white;">student</div>
+        <div class="userbtn">
+
+            <a class="btn" target="Blank" href="#" style="text-decoration: none;">
+                <p> Address</p>
+            </a>
+            <a class="btn" target="Blank" href="#" style="text-decoration: none;">
+                <p>Facebook Profile</p>
+            </a>
+            <a class="btn" target="Blank" href="#" style="text-decoration: none;">
+                <p>Instagram profile</p>
+            </a>
+            <a class="btn" target="Blank" href="#" style="text-decoration: none;">
+                <p>Twitter Profile</p>
+            </a>
+            <a class="btn" target="Blank" href="#" style="text-decoration: none;">
+                <p>Github profile</p>
+            </a>
+            <a class="btn" target="Blank" href="#" style="text-decoration: none;">
+                <p>Linkedin Profile</p>
+            </a>
+            <a class="btn" target="Blank" href="#" style="text-decoration: none;">
+                <p>Skype Profile </p>
+            </a>
+            <a class="btn" target="Blank" href="#" style="text-decoration: none;">
+                <p>Signal Profile</p>
+            </a>
+        </div>
+        <div class="box">
+            <i class="bi bi-envelope"></i>
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-instagram"></i>
+            <i class="bi bi-twitter"></i>
+            <i class="bi bi-github"></i>
+            <i class="bi bi-linkedin"></i>
+            <i class="bi bi-skype"></i>
+            <i class="bi bi-signal"></i>
+            <i class="bi bi-discord"></i>
+        </div>
+    </div>
+</body>
+
+</html>
