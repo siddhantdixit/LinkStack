@@ -44,7 +44,7 @@ exports.updateHandles = (req, res) => {
         github
     } = req.body;
 
-    const inputHandles = {
+    let inputHandles = {
         'handles.email': email,
         'handles.facebook': facebook,
         'handles.twitter': twitter,
@@ -75,8 +75,17 @@ exports.updateHandles = (req, res) => {
         'handles.poshmark': poshmark,
         'handles.github': github
     }
-    console.log(inputHandles);
-    Profile.updateOne({ userid: res.locals.myuserid }, { $set: inputHandles })
+    let handlesToUnset = {};
+    for(handl in inputHandles)
+    {
+        if(inputHandles[handl]=='')
+        {
+            handlesToUnset[handl] = 1;
+            inputHandles[handl] = undefined;
+        }
+    }
+
+    Profile.updateOne({ userid: res.locals.myuserid }, { $set: inputHandles , $unset:handlesToUnset})
         .then(userprofile => {
             res.send({ message: "Handles updated successfully!" })
         })
