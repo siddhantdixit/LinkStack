@@ -11,6 +11,18 @@
     <title><%=myusername%></title>
 </head>
 <style>
+    img {
+        border-radius: 50%;
+        width: 20vh;
+        height: 20vh;
+        object-fit: cover;
+        object-position: center;
+        margin-top: 6vmin;
+        margin-bottom: 4vmin;
+        transition: all 0.2s ease;
+    }
+
+
     .container {
         display: flex;
         align-items: center;
@@ -155,11 +167,15 @@
 <body>
     <div class="container">
         <div class="userlogo">
+        <% if(profile.photo) { %>
+            <img src="/api/public/profile/photo/<%=profile.photo%>" alt="Profile Pic" srcset="">
+        <% } else { %>
             <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="teal" class="bi bi-person-circle " viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                 <path fill-rule="evenodd"
                 d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
             </svg>
+        <% } %>
         </div>
         <div class="username">
             <% if(profile.title) { %>
