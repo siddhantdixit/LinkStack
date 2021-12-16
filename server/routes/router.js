@@ -6,6 +6,7 @@ const profilecontroller = require('../controller/profileController');
 const linkcontroller=require('../controller/linkController');
 const handlescontroller = require('../controller/handlesController');
 const { checkUser, requireAuth } = require('../../middleware/authMiddleware');
+const upload = require('../../middleware/upload');
 
 /*
 * @description for Root Route
@@ -37,7 +38,7 @@ route.get('/handles',services.handles);
 
 // Profile API (Title, Bio)
 route.get('/api/profile',profilecontroller.getProfile);
-route.put('/api/profile',profilecontroller.updateProfile);
+route.put('/api/profile', upload.single("file"), profilecontroller.updateProfile);
 // Links API
 route.post('/api/links',linkcontroller.create);
 route.get('/api/links',linkcontroller.find);

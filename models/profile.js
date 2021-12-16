@@ -7,11 +7,19 @@ const profileSchema = new mongoose.Schema({
         required:true,
         unique:true
     },
+    photo:{
+        type:String
+    },
     title:{
         type:String
     },
     bio:{
         type:String
+    },
+    theme:{
+        type:String,
+        enum: ['default','dark','wave'],
+        default: 'default'
     },
     totalViews:{
         type:Number,

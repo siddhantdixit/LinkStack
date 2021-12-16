@@ -63,7 +63,7 @@
         <div class="form-group">
             <label for="profileTitle" class="text-light">Profile Title</label>
             
-            <input type="text" name="profileTitle" value="" placeholder="Socail/Business/Creator/..">
+            <input type="text" name="title" value="" placeholder="Socail/Business/Creator/..">
         </div>
         <div class="form-group">
            <label for="bio" class="text-light">Bio</label><br>
@@ -73,8 +73,8 @@
        <div class="form-group">
         <label for="theme" class="text-light">Theme</label>
         <select name="theme" id="theme">
-          <option value="Theme1">Theme1</option>
-          <option value="Theme2">Theme2</option>
+          <option value="default">Default</option>
+          <option value="dark">Dark</option>
           <option value="Theme3">Theme3</option>
           <option value="Theme4">Theme4</option>
           <option value="Theme5">Theme5</option>
@@ -106,8 +106,8 @@
 
 
         $.ajax({
-              url: '/profilephoto',
-              type: 'post',
+              url: '/dashboard/api/profile',
+              type: 'put',
               data: formData,
               contentType: false,
               processData: false,

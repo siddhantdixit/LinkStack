@@ -8,7 +8,7 @@ exports.getProfile = (req,res)=>{
         if(!data){
             res.status(404).send({message:"Not found user with id:"})
         }else {
-            res.send({title:data.title,bio:data.bio});
+            res.send({photo:data.photo,title:data.title,bio:data.bio});
         }
     })
     .catch(err=>{
@@ -18,14 +18,26 @@ exports.getProfile = (req,res)=>{
 
 
 exports.updateProfile = (req,res)=>{
-    const {title,bio} = req.body;
-    if(!title && !bio)
-    {
-        res.status(400).send({message:"Content can not be empty! Need Title or Bio atleast"});
-        return;
+    const {title,bio,theme} = req.body;
+    // if(!title && !bio &&)
+    // {
+    //     res.status(400).send({message:"Content can not be empty! Need Title or Bio atleast"});
+    //     return;
+    // }
+    console.log(req.file);
+
+    let updatedDat = {
+        title:title,
+        bio:bio,
+        theme:theme
     }
 
-    Profile.findOneAndUpdate({userid:res.locals.myuserid},{title:title,bio:bio})
+    if(req.file)
+    {
+        updatedDat['photo'] = req.file.id;
+    }
+
+    Profile.findOneAndUpdate({userid:res.locals.myuserid},updatedDat)
         .then(data=>{
             if(!data){
                 res.status(404).send({message:`Cannot update user. Maybe user not found!`})

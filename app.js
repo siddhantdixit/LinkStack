@@ -300,10 +300,29 @@ app.get("/forgot-password",(req,res)=>{
 });
 
 
-app.post("/profilephoto",upload.single("file"),(req,res)=>{
-
-  console.log(req.file);
-  res.send("Uploaded");
+app.get("/api/public/profile/photo/:photoId",async (req,res)=>{
+  try {
+      let check = mongoose.isValidObjectId(req.params.photoId);
+      if(check)
+      {
+        const file = await gfs.files.findOne(mongoose.Types.ObjectId(req.params.photoId));
+        if(file)
+        {
+          const readStream = gfs.createReadStream(file.filename);
+          readStream.pipe(res);
+        }
+        else
+        {
+          res.status(404);
+          res.send("No Profile Pic Found");
+        }
+      }
+      else { res.send("Invalid")}
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+    res.send("Something Went Wrong Try Again Later");
+  }
 });
 
 app.post("/reset-password",(req,res)=>{
