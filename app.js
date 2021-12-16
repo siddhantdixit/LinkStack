@@ -6,6 +6,9 @@ var _ = require('lodash');
 const { JWT_LOGIN_Secret, LOGIN_MAXAGE, dbURI, JWT_VERIFICATION_Secret, VERIFICATION_MAXAGE } = require("./config");
 require("dotenv").config();
 
+const Grid = require("gridfs-stream");
+const upload = require('./middleware/upload')
+
 
 //Files
 const Account = require('./models/account');
@@ -37,6 +40,15 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
   })
   .catch((err) => console.log(err));
 
+
+
+let gfs;
+
+const conn = mongoose.connection;
+conn.once("open", function () {
+    gfs = Grid(conn.db, mongoose.mongo);
+    gfs.collection("photos");
+});
 
 /*
 
@@ -287,6 +299,12 @@ app.get("/forgot-password",(req,res)=>{
   }
 });
 
+
+app.post("/profilephoto",upload.single("file"),(req,res)=>{
+
+  console.log(req.file);
+  res.send("Uploaded");
+});
 
 app.post("/reset-password",(req,res)=>{
 
