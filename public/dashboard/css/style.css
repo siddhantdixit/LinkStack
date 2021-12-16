@@ -231,6 +231,12 @@ border-color: #32383e;
     background-color: var(--dark);
     color: var(--border);
 }
+#update_user .form-group select
+{
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 
 /* Appearance Css */
