@@ -52,7 +52,7 @@
     <div class="new_user">
         
         <div class="avatar-wrapper">
-            <img class="profile-pic" src="" />
+            <img id="profilePhoto" class="profile-pic" src="" />
             <div class="upload-button">
                 <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
             </div>
@@ -63,16 +63,16 @@
         <div class="form-group">
             <label for="profileTitle" class="text-light">Profile Title</label>
             
-            <input type="text" name="title" value="" placeholder="Socail/Business/Creator/..">
+            <input id="profileTitle" type="text" name="title" value="" placeholder="Socail/Business/Creator/..">
         </div>
         <div class="form-group">
            <label for="bio" class="text-light">Bio</label><br>
-           <textarea   name="bio" placeholder="Enter a bio description to appear on your profile"  ></textarea>
+           <textarea id="profileBio"  name="bio" placeholder="Enter a bio description to appear on your profile"  ></textarea>
        </div>
        
        <div class="form-group">
         <label for="theme" class="text-light">Theme</label>
-        <select name="theme" id="theme">
+        <select name="theme" id="profileTheme">
           <option value="default">Default</option>
           <option value="dark">Dark</option>
           <option value="Theme3">Theme3</option>
@@ -90,6 +90,26 @@
 </main>
 <!-- /Main Site -->
 <script>
+
+    $(document).ready(function() {
+        $.get('/dashboard/api/profile',(data,status)=>{
+            if(status==='success')
+            {
+                $("#profilePhoto").attr("src",`/api/public/profile/photo/${data.photo}`);
+                $("#profileTitle").val(data.title);
+                $("#profileBio").val(data.bio);
+                $("#profileTheme").val(data.theme);
+
+            }
+            else
+            {
+                alert("Error Fetching Data! Try Again");
+                location.reload();
+            }
+            console.log(data);
+            console.log(status);
+        });
+    });
 
     $("#appearance_form").submit((event)=>{
         event.preventDefault();
@@ -112,14 +132,16 @@
               contentType: false,
               processData: false,
               success: function(response){
-                  console.log(response);
-                //  if(response != 0){
-                //      console.log('success');
-                //  }else{
-                //     alert('Something went wrong!');
-                //  }
+                 if(response != 0){
+                     console.log('success');
+                     alert("Profile Saved!");
+                 }else{
+                    alert('Something went wrong!');
+                 }
               },
-           });
+           }).fail(()=>{
+               alert("Something went wrong! Try Again Later");
+           })
     });
 
 </script>

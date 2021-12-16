@@ -8,7 +8,7 @@ exports.getProfile = (req,res)=>{
         if(!data){
             res.status(404).send({message:"Not found user with id:"})
         }else {
-            res.send({photo:data.photo,title:data.title,bio:data.bio});
+            res.send({photo:data.photo,title:data.title,bio:data.bio,theme:data.theme});
         }
     })
     .catch(err=>{
