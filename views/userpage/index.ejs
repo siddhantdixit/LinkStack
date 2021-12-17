@@ -11,7 +11,13 @@
     <title><%=myusername%></title>
 </head>
 
-<%-include('themes/wave.ejs')%>
+<!-- Theme Select -->
+
+<% if(profile.theme) { %>
+    <%-include(`themes/${profile.theme}.ejs`)%>
+<% } else { %>
+    <%-include('themes/default.ejs')%>
+<% } %>
 
 <body>
     <div class="container">
