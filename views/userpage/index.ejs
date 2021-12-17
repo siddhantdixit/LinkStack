@@ -10,159 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <title><%=myusername%></title>
 </head>
-<style>
-    img {
-        border-radius: 50%;
-        width: 20vh;
-        height: 20vh;
-        object-fit: cover;
-        object-position: center;
-        margin-top: 6vmin;
-        margin-bottom: 4vmin;
-        transition: all 0.2s ease;
-    }
 
-
-    .container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        width: 700px;
-        justify-content: center;
-        padding-bottom: 50px;
-    }
-    
-    .userlogo {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .username {
-        display: flex;
-        flex-direction: column;
-        font-weight: bolder;
-    }
-    
-    .userlogo svg {
-        margin: 25px 0px;
-        cursor: pointer;
-    }
-    
-    .container h3 {
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 1.5;
-        overflow: hidden;
-        cursor: pointer;
-    }
-    
-    .userbtn {
-        display: flex;
-        flex-direction: column;
-        margin-top: 20px;
-        width: 100%;
-    }
-    
-    .btn {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        font-size: 18px;
-        margin-top: 10px;
-        padding: 13px 0px;
-        width: 100%;
-        background-color: teal;
-        text-align: center;
-        border: 1px solid wheat;
-        overflow-wrap: break-word;
-        word-break: break-word;
-        color: white
-    }
-    
-    @media screen and (max-width: 200px) {
-        .container {
-            width: 95%;
-        }
-        .box i {
-            margin: 15px 14px;
-            font-size: 40px;
-            cursor: pointer;
-            box-sizing: border-box;
-        }
-        .box {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-        }
-    }
-    
-    @media screen and (max-width: 800px) {
-        .container {
-            width: 98%;
-        }
-        .box i {
-            font-size: 40px;
-            margin: 15px 14px;
-            cursor: pointer;
-            box-sizing: border-box;
-        }
-        .box {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-        }
-    }
-    
-    .btn p {
-        position: relative;
-        hyphens: none;
-        padding: 0px;
-        margin: 0px;
-        line-height: 1.5;
-        width: 100%;
-    }
-    
-    .btn:hover {
-        size: 20px;
-        font-weight: bold;
-        color: teal;
-        background-color: white;
-        border: 2px solid teal;
-    }
-
-    .btn a{
-        text-decoration: none;
-    }
-    
-    .box {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        padding-top: 15px;
-    }
-    
-    .box i {
-        font-size: 40px;
-        margin: 15px 14px;
-        cursor: pointer;
-        color: teal;
-        box-sizing: border-box;
-    }
-    
-    .box i:hover {
-        color: rgb(26, 56, 56);
-        border: 1px solid white;
-    }
-</style>
+<%-include('themes/dark.ejs')%>
 
 <body>
     <div class="container">
@@ -170,7 +19,7 @@
         <% if(profile.photo) { %>
             <img src="/api/public/profile/photo/<%=profile.photo%>" alt="Profile Pic" srcset="">
         <% } else { %>
-            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="teal" class="bi bi-person-circle " viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="teal" class="bi bi-person-circle profileIcon" viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                 <path fill-rule="evenodd"
                 d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
