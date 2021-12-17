@@ -214,9 +214,21 @@
             });
         });
 
+        const getHandlesFormData = ()=>{
+            console.log("helo");
+            let chnged_handles = {};
+            $("input").each((index,elem)=>{
+                let elem_id = $(elem).attr('id');
+                let handle_name = elem_id.substring(0,elem_id.length-4);
+                chnged_handles[handle_name] = $(elem).val();
+            })
+            return chnged_handles;
+        }
+
         $("#save_btn").click(function(){
             console.log("Pressed Save Button");
-            let new_handles = getChangedHandles();
+            // let new_handles = getChangedHandles();
+            let new_handles = getHandlesFormData();
             if(!jQuery.isEmptyObject(new_handles))
             {
                 $.post("/dashboard/api/handles",new_handles,function(data,status){

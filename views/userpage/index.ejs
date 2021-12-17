@@ -53,7 +53,7 @@
             <% var userhandles = Object.entries(profile.handles); %>
 
             <% for(val in userhandles) { %>
-                <% if(userhandles[val][1]!=null) { %>
+                <% if(userhandles[val][1]!=null && userhandles[val][1]!='') { %>
 
                     <a href="<%= userhandles[val][1] %>" target="_blank"><i class="bi bi-<%= userhandles[val][0] %>"></i></a>
 

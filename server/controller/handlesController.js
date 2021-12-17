@@ -75,17 +75,8 @@ exports.updateHandles = (req, res) => {
         'handles.poshmark': poshmark,
         'handles.github': github
     }
-    let handlesToUnset = {};
-    for(handl in inputHandles)
-    {
-        if(inputHandles[handl]=='')
-        {
-            handlesToUnset[handl] = 1;
-            inputHandles[handl] = undefined;
-        }
-    }
 
-    Profile.updateOne({ userid: res.locals.myuserid }, { $set: inputHandles , $unset:handlesToUnset})
+    Profile.updateOne({ userid: res.locals.myuserid }, { $set: inputHandles })
         .then(userprofile => {
             res.send({ message: "Handles updated successfully!" })
         })
