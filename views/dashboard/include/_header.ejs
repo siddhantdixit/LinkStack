@@ -14,18 +14,27 @@
      <!-- Header -->
       <header id="header">
           <nav>
-              <div class="container">
+              <div class="container" style="padding-left: 20px;padding-right: 20px;">
                   <div class="text-center">
                       <a href="#" class="nav-brand text-dark">Dashboard</a>
                       <a href="/logout" class="border-shadow" style="float: right;">
                         <span class="text-gradient">Logout <i class="fas fa-sign-out-alt"></i></span>
                       </a>    
                   </div>
-                  <div>
+                  <div style="padding-top: 10px;">
                       <a href="/<%=myusername%>" target="_blank"> <%=myusername%> </a>
                       <a style="float: right;"> <%=myemail%> </a>
                   </div>
               </div>
+
+              <div class="container" style="padding-top: 10px;padding-right: 20px;">
+                <!-- <span style="float: right;" class="badge badge--info">FREE</span> -->
+                <span style="float: right;" class="badge badge--warning">PRO</span>
+              </div>
+
+              <!-- <br> -->
+              <!-- <br> -->
+             
           </nav>
       </header>
      <!-- /Header -->

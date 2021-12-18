@@ -17,6 +17,12 @@ a{
     font-family: 'PT Sans', sans-serif;
 
 }
+
+span{
+    font-family: 'PT Sans', sans-serif;
+}
+
+
 .container{
     max-width: 1024px;
     margin: auto;
@@ -72,7 +78,7 @@ a{
 }
 
 #site-main{
-    margin-top: 6em;
+    margin-top: 3em;
     font-family: 'Barlow', sans-serif;
 }
 
@@ -296,4 +302,53 @@ border-color: #32383e;
 }
 .avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
   opacity: 0.9;
+}
+
+.badge {
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: #2c3e50;
+    color: #ffffff;
+    border-radius: 3rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    line-height: inherit;
+}
+
+.badge--line {
+background-color: transparent;
+color: #3498db;
+box-shadow: 0 0 0 1px #95a5a6;
+}
+
+.badge--info {
+background-color: #3498db;
+border: 1px dashed #1f5b83;
+border-width: 2px;
+}
+
+.badge--warning {
+background-color: #f1c40f;
+border: 1px dashed #a3850a;
+border-width: 2px;
+}
+
+.badge--danger {
+background-color: #e74c3c;
+}
+
+.badge--success {
+background-color: #2ecc71;
+}
+
+.badge--small {
+font-size: 1.2rem;
+padding: 0.1rem 0.65rem 0.2rem;
+}
+
+.badge--smaller {
+font-size: 0.7rem;
+padding: 0.05rem 0.4rem 0.15rem;
 }
