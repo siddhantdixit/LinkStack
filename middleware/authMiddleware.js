@@ -41,12 +41,14 @@ const checkUser = (req, res, next) => {
         res.locals.myuserid = null;
         res.locals.myusername = null;
         res.locals.myemail = null;
+        res.locals.mysubscription = null;
         next();
       } else {
         let user = await Account.findById(decodedToken.id);
         res.locals.myuserid = decodedToken.id;
         res.locals.myusername = user.username;
         res.locals.myemail = user.email;
+        res.locals.mysubscription = user.subscription;
         if(user.status==='verification')
         {
           res.render('dashboard/mailverification.ejs');
@@ -61,6 +63,7 @@ const checkUser = (req, res, next) => {
     res.locals.myuserid = null;
     res.locals.myusername = null;
     res.locals.myemail = null;
+    res.locals.mysubscription = null;
     next();
   }
 };

@@ -28,8 +28,11 @@
               </div>
 
               <div class="container" style="padding-top: 10px;padding-right: 20px;">
-                <!-- <span style="float: right;" class="badge badge--info">FREE</span> -->
-                <span style="float: right;" class="badge badge--warning">PRO</span>
+                <% if(mysubscription=='free') { %>
+                    <a href="/dashboard/subscription"><span  id="subscriptiontype" style="float: right;" class="badge badge--info">FREE</span></a>
+                <% } else if(mysubscription=='pro') { %>
+                    <span style="float: right;" class="badge badge--warning">PRO</span>
+                <% } %>
               </div>
 
               <!-- <br> -->
