@@ -20,6 +20,14 @@ const accountSchema = new mongoose.Schema({
         required:true,
         validate:[validator.isStrongPassword,'Please enter a strong password']
     },
+    subscription:{
+      type:String,
+      enum: ['free','pro'],
+      default: 'free'
+    },
+    createdDate:{
+      type:String
+    },
     status:{
       type:String,
       enum:['verification','active'],

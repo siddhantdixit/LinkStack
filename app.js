@@ -209,7 +209,15 @@ app.post("/signup",async (req,res)=>{
 
   try
   {
-    const user = await Account.create({username,password,email});
+    let curdat = new Date();
+    let mydt = curdat.toLocaleString("en-US",{timeZone: 'Asia/Kolkata'});
+
+    const user = await Account.create({
+      username:username,
+      password:password,
+      email:email,
+      createdDate:mydt
+    });
     const profile = await Profile.create({userid:user._id});
     if(user)
     {
