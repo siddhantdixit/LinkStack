@@ -8,6 +8,12 @@ const handlescontroller = require('../controller/handlesController');
 const { checkUser, requireAuth } = require('../../middleware/authMiddleware');
 const upload = require('../../middleware/upload');
 
+
+const {initPayment, responsePayment} = require("../../paytm/services/index");
+const Account = require('../../models/account');
+const Transaction = require('../../models/transaction');
+
+
 /*
 * @description for Root Route
 * @method GET/
@@ -33,6 +39,87 @@ route.get('/appearance',services.appearance);
 
 
 route.get('/handles',services.handles);
+
+
+// ==== Payment Routes =====
+
+
+// route.get('/subscription) for pricing page
+
+route.get('/subscription/activate',async (req,res)=>{
+
+    if(!res.locals.myuserid){
+        res.send('Something went wrong'); return;
+    }
+
+    //Rs 350
+    initPayment('350',req,res).then(
+      async success => {
+          console.log(success);
+          const txn = await Transaction.create({orderid:success.ORDER_ID,userid:res.locals.myuserid});
+          if(txn)
+          {
+            res.render("payment/paytmRedirect.ejs", {
+                resultData: success,
+                paytmFinalUrl: process.env.PAYTM_FINAL_URL
+            });
+          }
+          else
+          {
+              res.send("Failed Try Again Later!");
+          }
+      },
+      error => {
+          res.send(error);
+      }
+    );
+});
+
+
+route.post("/subscription/transaction",(req,res)=>{
+
+    console.log("========= POST /paywithpaytmresponse ========");
+    console.log(req.params);
+    console.log(req.body);
+    
+  
+    responsePayment(req.body).then(
+        async success => {
+            console.log(success);
+            console.log(success.ORDERID);
+            if(success.RESPCODE === '01')
+            {
+                //Payment Success. Activate User to Pro Subscription
+                
+                //FIND User from Order
+                const txn = await Transaction.findOne({orderid:success.ORDERID});
+                console.log(txn);
+                console.log(txn.userid);
+                const prousr = txn.userid;
+                const usrtypechng = await Account.updateOne({_id:prousr},{subscription:'pro'});
+                if(usrtypechng.ok==1)
+                {
+                    //User changed to PRO
+                    res.render("payment/response.ejs", {resultData: "true", responseData: success});
+                }
+                else
+                {
+                    res.render("Something Went Wrong Try Again Later");
+                }
+            }
+            else
+            {
+                //Transaction Failed or Still Processing
+                res.render("payment/response.ejs", {resultData: "true", responseData: success});
+            }
+        },
+        error => {
+            res.send(error);
+        }
+    );
+  });
+
+
 
 
 

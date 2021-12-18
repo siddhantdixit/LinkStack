@@ -4,6 +4,12 @@ const Account = require('../models/account');
 const User = require('../models/account');
 
 const requireAuth = (req, res, next) => {
+  if(req.path === '/subscription/transaction') 
+  {
+    next();
+    return;
+  }
+
   const token = req.cookies.jwt;
 
   if (token) {
@@ -22,6 +28,12 @@ const requireAuth = (req, res, next) => {
 };
 
 const checkUser = (req, res, next) => {
+  if(req.path === '/subscription/transaction') 
+  {
+    next();
+    return;
+  }
+
   const token = req.cookies.jwt;
   if (token) {
     jwt.verify(token, JWT_LOGIN_Secret, async (err, decodedToken) => {
