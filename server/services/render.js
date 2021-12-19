@@ -17,7 +17,7 @@ exports.homeRoutes=(req,res)=>{
 
     Profile.findOne({userid:res.locals.myuserid})
     .then(user=>{
-        res.render('dashboard/index.ejs',{users:user.links});
+        res.render('dashboard/index.ejs',{users:user.links,profile:user});
     })
     .catch(err=>{
         res.status(500).send({message:err.message||"Error Occurred while retriving user information"})

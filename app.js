@@ -445,7 +445,7 @@ app.get('/:username',(req,res,next)=>{
 
   //Finding User in Database
   Account.findOne({username:username})
-    .then((data)=>{
+    .then(async (data)=>{
       if(!data)
       {
         //Usernot found
@@ -454,6 +454,8 @@ app.get('/:username',(req,res,next)=>{
       else
       {
         //Userfound. Now get his profile to search
+        await Profile.updateOne({userid:data._id},{$inc: {totalViews:1}});
+
         Profile.findOne({userid:data._id})
           .then((profile_data)=>{
             // res.send(profile_data);
