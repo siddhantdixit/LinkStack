@@ -5,12 +5,12 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'projectlinkedlist@gmail.com',
-    pass: 'Lh6RuSma6FT4s7b'
+    pass: process.env.EMAILPASSWORD
   }
 });
 
 let mailOptions = {
-  from: 'ProjectLinkedList <projectlinkedlist@gmail.com>',
+  from: 'LinkStack <projectlinkedlist@gmail.com>',
   to: 'siddhant.dixit23@gmail.com',
   subject: 'Account Verification',
 };

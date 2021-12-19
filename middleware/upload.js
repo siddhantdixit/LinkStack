@@ -1,11 +1,10 @@
 const multer = require("multer");
 var path = require('path');
 const GridFsStorage = require("multer-gridfs-storage");
-const {dbURI} = require('../config');
 
 
 const storage = new GridFsStorage({
-    url: dbURI,
+    url: process.env.MONGODBURL,
     options: { useNewUrlParser: true, useUnifiedTopology: true },
     file: (req, file) => {
         console.log("========== FILE ==========");

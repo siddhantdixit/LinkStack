@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const axios = require("axios");
 var cookieParser = require('cookie-parser')
 var _ = require('lodash');
-const { JWT_LOGIN_Secret, LOGIN_MAXAGE, dbURI, JWT_VERIFICATION_Secret, VERIFICATION_MAXAGE } = require("./config");
+const {LOGIN_MAXAGE, VERIFICATION_MAXAGE } = require("./config");
 require("dotenv").config();
 
 const Grid = require("gridfs-stream");
@@ -31,7 +31,7 @@ app.set("view engine", "pug");
 app.set("json spaces", 2);
 
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGODBURL, { useNewUrlParser: true, useUnifiedTopology: true})
   .then((result) => {
     console.log('Connected to MongoDB.....');
     app.listen(process.env.PORT || 80, () => {
@@ -90,7 +90,7 @@ const autoLogin = (req,res) => {
     const token = req.cookies.jwt;
     if(token)
     {
-      return jwt.verify(token, JWT_LOGIN_Secret);
+      return jwt.verify(token, process.env.JWTLOGINSECRET);
     }
     else
     {
@@ -106,7 +106,7 @@ const signVerificationToken = (token) => {
   try{
     if(token)
     {
-      return jwt.verify(token, JWT_VERIFICATION_Secret);
+      return jwt.verify(token, process.env.JWTVERIFICATIONSECRET);
     }
     else
     {
@@ -119,13 +119,13 @@ const signVerificationToken = (token) => {
 }
 
 const createLoginToken = (id) => {
-  return jwt.sign({ id }, JWT_LOGIN_Secret , {
+  return jwt.sign({ id }, process.env.JWTLOGINSECRET , {
     expiresIn: LOGIN_MAXAGE,
   });
 };
 
 const createVerificationToken = (id) => {
-  return jwt.sign({ id }, JWT_VERIFICATION_Secret, {
+  return jwt.sign({ id }, process.env.JWTVERIFICATIONSECRET, {
     expiresIn: VERIFICATION_MAXAGE,
   });
 };
