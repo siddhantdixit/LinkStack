@@ -3,7 +3,7 @@
     <img
       alt="Link List"
       src="docs/logos/colored_vector.svg"
-      width="400"
+      width="600"
     />
   </a>
 </p>
