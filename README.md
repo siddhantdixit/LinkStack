@@ -1,8 +1,13 @@
-# LinkStack (OOP-ProjectLinkedList)
-Project for OOP Assignment
+<p align="center">
+  <a href="http://project-linkedlist.herokuapp.com/">
+    <img
+      alt="Link List"
+      src="docs/logos/colored_vector.svg"
+      width="400"
+    />
+  </a>
+</p>
 
-
-## Description
 
 Our Project is social media reference landing page that's a Bio Link tool. It will allow you to create a personalized and easily customizable page, that houses all the important links you want to share with your audience. It can be used on social platforms like Instagram, TikTok, Twitch, Facebook, YouTube, Twitter, or LinkedIn, or you can use it to aid discovery of your work, brand, or business.
 
