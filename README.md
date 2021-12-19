@@ -1,4 +1,4 @@
-# OOP-ProjectLinkedList
+# LinkStack (OOP-ProjectLinkedList)
 Project for OOP Assignment
 
 
