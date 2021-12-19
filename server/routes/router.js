@@ -44,7 +44,9 @@ route.get('/handles',services.handles);
 // ==== Payment Routes =====
 
 
-// route.get('/subscription) for pricing page
+route.get('/subscription',(req,res)=>{
+    res.render('dashboard/subscription.ejs');
+});
 
 route.get('/subscription/activate',async (req,res)=>{
 
