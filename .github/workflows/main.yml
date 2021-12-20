@@ -31,5 +31,5 @@ jobs:
         with:
           debug: true
           directory: ./
-          badge: ./docs/badges/badge.svg
+          badge: ./output/badge.svg
           ignore: 'node_modules'
