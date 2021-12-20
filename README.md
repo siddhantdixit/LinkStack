@@ -22,12 +22,10 @@ You can get analytics of your profile and links.
 ## UML
 
 <p align="center">
-  <a href="http://project-linkedlist.herokuapp.com/">
     <img
       alt="Link List"
       src="docs/diagrams/UML Diagram.png"
     />
-  </a>
 </p>
 
 
@@ -36,12 +34,10 @@ You can get analytics of your profile and links.
 ## Usecase Diagram
 
 <p align="center">
-  <a href="http://project-linkedlist.herokuapp.com/">
     <img
       alt="Link List"
       src="docs/diagrams/usecase.svg"
     />
-  </a>
 </p>
 
 
