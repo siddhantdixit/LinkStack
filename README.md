@@ -40,7 +40,6 @@ You can get analytics of your profile and links.
     <img
       alt="Link List"
       src="docs/diagrams/usecase.svg"
-      width="600"
     />
   </a>
 </p>
