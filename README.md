@@ -1,6 +1,5 @@
 [![Node.js CI](https://github.com/siddhantdixit/OOP-ProjectLinkedList/actions/workflows/node.js.yml/badge.svg)](https://github.com/siddhantdixit/OOP-ProjectLinkedList/actions/workflows/node.js.yml)
 ![GitHub issues](https://img.shields.io/github/issues/siddhantdixit/OOP-ProjectLinkedList)
-![GitHub repo file count](https://img.shields.io/github/directory-file-count/siddhantdixit/OOP-ProjectLinkedList)
 ![GitHub](https://img.shields.io/github/license/siddhantdixit/OOP-ProjectLinkedList)
 
 <p align="center">
