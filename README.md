@@ -17,6 +17,36 @@ Our Project is social media reference landing page that's a Bio Link tool(A sing
 
 You can get analytics of your profile and links.
 
+<br>
+
+## UML
+
+<p align="center">
+  <a href="http://project-linkedlist.herokuapp.com/">
+    <img
+      alt="Link List"
+      src="docs/diagrams/UML Diagram.png"
+      width="600"
+    />
+  </a>
+</p>
+
+
+<br>
+
+## Usecase Diagram
+
+<p align="center">
+  <a href="http://project-linkedlist.herokuapp.com/">
+    <img
+      alt="Link List"
+      src="docs/diagrams/usecase.svg"
+      width="600"
+    />
+  </a>
+</p>
+
+
 
 
 ---
