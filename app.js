@@ -81,7 +81,7 @@ app.get("/", async (req, res) => {
 app.use('/dashboard',require('./server/routes/router'));
 
 app.get("/", (req, res) => {
-  res.render('index');
+  res.redirect('/login');
 });
 
 
