@@ -76,11 +76,6 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
     $ npm install npm -g
 
 
-## Project Presentation
-
-https://www.slideshare.net/SiddhantDixit6/project-linkedlist-linkstack-a-social-media-reference-tool
-
-
 ## Project Setup
 
 ```
