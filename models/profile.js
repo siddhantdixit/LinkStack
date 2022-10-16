@@ -18,11 +18,7 @@ const profileSchema = new mongoose.Schema({
     },
     theme:{
         type:String,
-<<<<<<< Updated upstream
-        enum: ['default','dark','wave','purple','hexagonal','bluedot','purpledot','shapes'],
-=======
-        enum: ['default','dark','wave','purple','hexagonal','bluedot','purpledot','shapes','moon','snow'],
->>>>>>> Stashed changes
+        enum: ['default','dark','wave','purple','hexagonal','bluedot','purpledot','shapes','soundwave','abstractpaper','stockmarket','worldmapindia','moon','snow'],
         default: 'default'
     },
     totalViews:{
