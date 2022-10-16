@@ -1,0 +1,57 @@
+<%- include('default.ejs') %>
+<style>
+     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Oxygen:wght@700&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Oxygen:wght@700&family=Yeseva+One&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Neuton:ital@1&family=Oxygen:wght@700&family=Yeseva+One&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=Aclonica&family=EB+Garamond:ital,wght@1,500&family=Neuton:ital@1&family=Oxygen:wght@700&family=Yeseva+One&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+    body{
+        background:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1547' height='768' preserveAspectRatio='none' viewBox='0 0 1447 568'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1021%26quot%3b)' fill='none'%3e%3crect width='1447' height='568' x='0' y='0' fill='url(%23SvgjsLinearGradient1022)'%3e%3c/rect%3e%3cpath d='M710 113.6C684.73 113.6 661.03 128.56 661.03 142C661.03 155 684.9 166.48 710 166.48C741.66 166.48 774.55 155.08 774.55 142C774.55 128.64 741.49 113.6 710 113.6' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M994 106C954.71 106 908.8 124.6 908.8 142C908.8 159.2 954.35 175.19 994 175.19C1015.74 175.19 1031.59 158.98 1031.59 142C1031.59 124.38 1016.11 106 994 106' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M1562 94.67C1559.36 94.67 1551.48 42.63 1551.48 0C1551.48 -4.71 1561.47 -4.73 1562 0C1566.73 42.6 1564.62 94.67 1562 94.67' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M284 276.25C279.16 276.25 275.48 280.25 275.48 284C275.48 287.56 279.25 290.87 284 290.87C291.7 290.87 300.38 287.62 300.38 284C300.38 280.31 291.61 276.25 284 276.25' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M852 227.2C842.61 227.2 831.71 258.73 831.71 284C831.71 294.51 842.18 298.75 852 298.75C860.8 298.75 868.96 293.84 868.96 284C868.96 258.06 861.23 227.2 852 227.2' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M42.93 142C59.84 90.93 87.47 94.46 142 64.55C208 28.35 216.24 2.01 284 9.79C358.24 18.31 355.17 53.2 426 97.16C461.67 119.3 460.02 122.4 497 142C531.02 160.03 532.17 158.02 568 172.43C638.67 200.86 644.62 191.28 710 227.69C744.78 247.06 737.13 258.26 768.32 284C808.13 316.85 814.62 309.68 852 344.86C890.05 380.68 919.18 381.51 919.18 426C919.18 490 905.96 528.53 852 561.83C801.37 593.07 778.52 552.35 710 555.09C701.47 555.43 706.42 567.23 697.91 568C635.42 573.68 632.95 568 568 568C497 568 497 568 426 568C387.62 568 380.71 583.73 349.24 568C309.71 548.23 325.8 508.65 284 497C222.18 479.77 204.1 529.35 142 510.24C88.72 493.85 70.01 478.18 53.25 426C33.68 365.06 71.92 354.62 69.35 284C66.76 212.62 23.51 200.66 42.93 142' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M710 42.6C677.75 42.6 647.35 11.66 647.35 0C647.35 -9.64 678.67 0 710 0C748.04 0 786.07 -9.92 786.07 0C786.07 11.38 747.11 42.6 710 42.6' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M284 211.71C237.17 219.22 204.48 249.03 204.48 284C204.48 317.24 239.61 346.55 284 348.13C350.37 350.49 355.64 321.22 426 291.89C432.55 289.16 437.83 289.97 437.83 284C437.83 268.28 441.63 255.85 426 248.5C364.72 219.7 347.93 201.47 284 211.71' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M125.49 142C125.49 132.42 131.81 129.72 142 129.09C211.06 124.82 214.42 126.43 284 132.21C292.18 132.89 297.52 138 297.52 142C297.52 145.47 290.28 143.58 284 147.16C212.52 187.95 193.2 232.42 142 230.75C113.95 229.84 125.49 183.25 125.49 142' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M994 6C988.56 6 983.61 1.61 983.61 0C983.61 -1.39 988.81 0 994 0C1001.89 0 1009.78 -1.45 1009.78 0C1009.78 1.55 1001.65 6 994 6' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M974.93 284C974.93 275.88 983.21 267.4 994 267.4C1011.54 267.4 1031.59 275.95 1031.59 284C1031.59 291.95 1011.67 299.4 994 299.4C983.34 299.4 974.93 291.88 974.93 284' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M1399.71 284C1399.71 280.22 1411.11 274.94 1420 274.94C1424.43 274.94 1426.36 279.84 1426.36 284C1426.36 287.21 1423.84 289.68 1420 289.68C1410.51 289.68 1399.71 287.59 1399.71 284' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M116.64 426C116.64 375.19 108.43 320.9 142 316.77C192.11 310.6 207.37 385.5 284 405.39C349.37 422.36 358.08 409.34 426 390.5C500.08 369.95 494.31 349.9 568 326.6C636.31 305 644.43 285.85 710 300.71C786.43 318.03 784.69 341.65 852 390.96C870.2 404.29 881.01 406.79 881.01 426C881.01 453.63 878.92 477.03 852 484.65C793.42 501.23 770.41 452.48 710 474.41C655.6 494.16 672.23 535.14 622.38 568C601.23 581.94 595.19 568 568 568C497 568 497 568 426 568C411.61 568 407.64 577.04 397.22 568C336.64 515.44 353.01 476.68 284 444.79C225.4 417.71 209.16 457.61 142 450.07C125.48 448.21 116.64 441.84 116.64 426' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M1230.67 426C1230.67 391.05 1257.57 351.26 1278 351.26C1296.67 351.26 1308.87 389.95 1308.87 426C1308.87 451.81 1295.96 474.97 1278 474.97C1256.86 474.97 1230.67 452.91 1230.67 426' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M1406.48 568C1406.48 566.01 1412.73 560.53 1420 560.53C1435.27 560.53 1451.56 566.11 1451.56 568C1451.56 569.84 1435.78 568 1420 568C1413.24 568 1406.48 569.74 1406.48 568' stroke='rgba(51%2c 121%2c 194%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1021'%3e%3crect width='1647' height='768' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.19%25' y1='-38.69%25' x2='84.81%25' y2='138.69%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1022'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='%2300459e' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e")
+    }
+
+   .container h3 {
+        color: azure;
+        /* font-family: 'EB Garamond', serif; */
+        /* font-family: 'Oxygen', sans-serif; */
+        /* font-family: 'Yeseva One', cursive; */
+        font-family: 'Poppins', sans-serif;
+        
+   }
+
+   .btn{
+        font-family: 'Aclonica', sans-serif;
+        font-family: 'EB Garamond', serif;
+        font-family: 'Neuton', serif;
+        font-family: 'Oxygen', sans-serif;
+        font-family: 'Yeseva One', cursive;
+        background-color: rgba(160, 167, 235, 0.666);
+        color:white;
+        border-radius: 22px;
+        border: initial;
+   }
+
+
+   .btn:hover {
+        background-color: initial;
+        color:white;
+        border: 2px solid rgba(160, 167, 235, 0.466);
+   }
+
+   .box i {
+        color:white;
+   }
+
+   .box i:hover {
+          color: rgb(66, 24, 105);
+          border: 0px solid white;
+   }
+
+   .profileIcon{
+        fill: rgba(160, 167, 235, 0.966);
+    }
+
+    .userbio{
+          color: aliceblue;
+    }
+</style>
