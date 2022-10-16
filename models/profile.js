@@ -18,7 +18,7 @@ const profileSchema = new mongoose.Schema({
     },
     theme:{
         type:String,
-        enum: ['default','dark','wave','purple','hexagonal','bluedot','purpledot','shapes','soundwave','abstractpaper','stockmarket'],
+        enum: ['default','dark','wave','purple','hexagonal','bluedot','purpledot','shapes','soundwave','abstractpaper','stockmarket','worldmapindia'],
         default: 'default'
     },
     totalViews:{
