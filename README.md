@@ -95,3 +95,22 @@ npm install
 ```
 npm start
 ```
+
+
+
+Create an .env files with the following parameters.
+
+```
+MID="PAYTM_MERCHANT_ID"
+PAYTM_MERCHANT_KEY="PAYTM_MERCHANT_KEY"
+WEBSITE=WEBSTAGING
+CHANNEL_ID=WEB
+INDUSTRY_TYPE_ID=Retail
+PAYTM_FINAL_URL=https://securegw-stage.paytm.in/theia/processTransaction
+CALLBACK_URL=http://localhost/dashboard/subscription/transaction
+PORT=80
+EMAILPASSWORD="EMAIL-PASSWORD-USED-IN-NODEMAILER"
+JWTLOGINSECRET='128-Characters-Alphanumber-Random-Generated-Crypto-Key'
+JWTVERIFICATIONSECRET='128-Characters-Alphanumber-Random-Generated-Crypto-Key'
+MONGODBURL='mongodb+srv://YOUR-MONGODB-ONLINE-OR-LOCAL-CLUSTER/ProjectLinkedList?retryWrites=true&w=majority'
+```
