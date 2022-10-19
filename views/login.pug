@@ -36,6 +36,11 @@
 
         //- console.log(validator.isStrongPassword(passwrd_inp));
 
+        if(checkUsername(usernm_inp) == false){
+          alert("Usernames must contain only letters, numbers, underscores ('_') and periods ('.')");
+          return false;
+        }
+        usernm_inp = usernm_inp.toLowerCase();
 
         axios.post('/login', {
             username: usernm_inp,
@@ -57,4 +62,12 @@
             alert("Something Went Wrong! Try Again Later");
           });
       });
+      function checkUsername(username){
+          var pattern = /^[a-zA-Z0-9._]{1,}$/;
+          if(pattern.test(username)){
+              return true;
+          }else{
+              return false;
+          }
+      };
 </html>

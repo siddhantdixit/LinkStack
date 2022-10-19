@@ -34,6 +34,11 @@
         let passwrd_inp = $("#inputPassword").val();
         let cnf_password_inp = $("#confirmPassword").val();
 
+        if(checkUsername(usernm_inp) == false){
+          alert("Usernames must contain only letters, numbers, underscores ('_') and periods ('.')");
+          return false;
+        }
+        usernm_inp = usernm_inp.toLowerCase();
 
         if(passwrd_inp===cnf_password_inp)
         {
@@ -77,4 +82,12 @@
         }
 
       });
+      function checkUsername(username){
+          var pattern = /^[a-zA-Z0-9._]{1,}$/;
+          if(pattern.test(username)){
+              return true;
+          }else{
+              return false;
+          }
+      };
 </html>
