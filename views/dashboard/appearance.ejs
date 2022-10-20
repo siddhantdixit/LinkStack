@@ -115,7 +115,8 @@
             }
             else
             {
-                alert("Error Fetching Data! Try Again");
+                // alert("Error Fetching Data! Try Again");
+                swal("Oops!", "Error Fetching Data! Try Again", "info");
                 location.reload();
             }
             console.log(data);
@@ -150,11 +151,12 @@
                     swal("Good job!", "Profile Saved!", "success");
                  }else{
                     // alert('Something went wrong!');
-                    swal("Error!", "Something Went Wrong!", "error");
+                    swal("Error!", "Something Went Wrong!", "info");
                  }
               },
            }).fail(()=>{
-               alert("Something went wrong! Try Again Later");
+            //    alert("Something went wrong! Try Again Later");
+            swal("Error!", "Something went wrong! Try Again Later", "info");
            })
     });
 
