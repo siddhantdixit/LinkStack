@@ -14,7 +14,7 @@ const linkSchema = new mongoose.Schema({
     },
     visibility:{
         type:String,
-        required:true
+        required:false
     }
 })
 
