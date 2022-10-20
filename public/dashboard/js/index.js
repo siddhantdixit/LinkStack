@@ -2,7 +2,29 @@
 
 
 $('#add_user').submit(function(event){
-    alert("Data Inserted Successfully!");
+    // alert("Data Inserted Successfully!");
+    event.preventDefault();
+
+    var unindexed_array=$(this).serializeArray();
+    var data={}
+
+     $.map(unindexed_array,function(n,i){
+       data[n['name']]=n['value']
+     })
+
+    console.log(data)   
+
+    var request={
+        "url":`/dashboard/api/links/`,
+        "method":"POST",
+        "data":data
+    }
+
+    $.ajax(request).done(function(response){
+        // alert("Data Updated Successfully!")
+        swal("Good job!", "Data Added Successfully!", "success");
+
+    })
 })
 
 $('#update_link').submit(function(event){
@@ -24,7 +46,8 @@ $('#update_link').submit(function(event){
     }
 
     $.ajax(request).done(function(response){
-        alert("Data Updated Successfully!")
+        // alert("Data Updated Successfully!")
+        swal("Good job!", "Data Updated Successfully!", "success");
     })
 })
 
@@ -39,9 +62,10 @@ $ondelete.click(function(){
 
     if(confirm("Do you really want to delete this record ?")){
         $.ajax(request).done(function(response){
-            alert("Data Deleted Successfully!")
-            location.reload()
-        })  
+            // alert("Data Deleted Successfully!")
+            swal("Good job!", "Data Deleted Successfully!", "success");
+                location.reload()
+        })
     }
 })
 
