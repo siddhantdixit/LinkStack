@@ -34,6 +34,12 @@
         let passwrd_inp = $("#inputPassword").val();
         let cnf_password_inp = $("#confirmPassword").val();
 
+        if(checkUsername(usernm_inp) == false){
+          //- alert("Usernames must contain only letters, numbers, underscores ('_') and periods ('.')");
+          swal("Oops!", "Usernames must contain only letters, numbers, underscores ('_') and periods ('.')", "error");
+          return false;
+        }
+        usernm_inp = usernm_inp.toLowerCase();
 
         if(passwrd_inp===cnf_password_inp)
         {
@@ -49,17 +55,22 @@
               console.log(response);
               if(response.data.code === '010' || response.data.code === '011')
               {
-                alert(`Account Registered Successfully!\n Username : ${usernm_inp}\n Email : ${email_inp}\n\n Now you can login.`);
+
+                let output = `Account Registered Successfully!\n Username : ${usernm_inp}\n Email : ${email_inp}\n\n Now you can login.`;
+                alert(output);
+                //- swal({title:"Account Registered Successfully!",text:"Username :"+${usernm_inp}\n"Email :"+${email_inp}\n\n"Now you can login."})
                 window.location.href='/login';
               }
               else
               {
-                alert("Incorrect Username or Password");
+                //- alert("Incorrect Username or Password");
+                swal("Oops!", "Incorrect Username or Password", "error");
               }
             })
             .catch(function (error) {
               let statments = error.response.data;
-              alert(`Something Went Wrong! Try Again Later \n ${JSON.stringify(statments)}`);
+              //- alert(`Something Went Wrong! Try Again Later \n ${JSON.stringify(statments)}`);
+            swal("Oops!", "Something Went Wrong! Try Again Later", "error");
             });
           }
           else {
@@ -69,12 +80,24 @@
             strong_description+="4. Password should have a number\n";
             strong_description+="5. Password should have a special character\n";
             alert(`Please enter a strong password\n\n${strong_description}`);
+            //- swal("Oops!",`Please enter a strong password\n\n${strong_description}`, "info");
+            //- var my_var=${strong_description};
+            //- swal("Oops!", "Please enter a strong password"+my_var, "info");
           }
         }
         else 
         {
-          alert("Password and Conform Password are not same. Please try again");
+          //- alert("Password and Conform Password are not same. Please try again");
+              swal("Oops!", "Password and Conform Password are not same. Please try again", "info");
         }
 
       });
+      function checkUsername(username){
+          var pattern = /^[a-zA-Z0-9._]{1,}$/;
+          if(pattern.test(username)){
+              return true;
+          }else{
+              return false;
+          }
+      };
 </html>

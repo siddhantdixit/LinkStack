@@ -36,6 +36,12 @@
 
         //- console.log(validator.isStrongPassword(passwrd_inp));
 
+        if(checkUsername(usernm_inp) == false){
+          //- alert("Usernames must contain only letters, numbers, underscores ('_') and periods ('.')");
+          swal("Oops!", "Usernames must contain only letters, numbers, underscores ('_') and periods ('.')", "error");
+          return false;
+        }
+        usernm_inp = usernm_inp.toLowerCase();
 
         axios.post('/login', {
             username: usernm_inp,
@@ -50,11 +56,22 @@
             }
             else
             {
-              alert("Incorrect Username or Password");
+              //- alert("Incorrect Username or Password");
+              swal("Oops!", "Incorrect Username or Password", "error");
+              
             }
           })
           .catch(function (error) {
-            alert("Something Went Wrong! Try Again Later");
+            //- alert("Something Went Wrong! Try Again Later");
+            swal("Oops!", "Something Went Wrong! Try Again Later", "error");
           });
       });
+      function checkUsername(username){
+          var pattern = /^[a-zA-Z0-9._]{1,}$/;
+          if(pattern.test(username)){
+              return true;
+          }else{
+              return false;
+          }
+      };
 </html>

@@ -1,0 +1,58 @@
+<%- include('default.ejs') %>
+<style>
+     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Oxygen:wght@700&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Oxygen:wght@700&family=Yeseva+One&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Neuton:ital@1&family=Oxygen:wght@700&family=Yeseva+One&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=Aclonica&family=EB+Garamond:ital,wght@1,500&family=Neuton:ital@1&family=Oxygen:wght@700&family=Yeseva+One&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+    body{
+        background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1002%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M603.6101842699225 449.7733480863464L457.95199317631256 405.2411700632613 413.41981515322743 550.8993611568712 559.0780062468374 595.4315391799563z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1260.208%2c325.155C1274.696%2c324.623%2c1287.814%2c317.161%2c1295.271%2c304.728C1302.961%2c291.906%2c1305.101%2c275.828%2c1297.522%2c262.941C1290.032%2c250.205%2c1274.965%2c244.369%2c1260.208%2c245.107C1246.686%2c245.783%2c1236.13%2c254.965%2c1228.844%2c266.376C1220.776%2c279.012%2c1213.325%2c294.25%2c1220.383%2c307.477C1227.711%2c321.211%2c1244.651%2c325.726%2c1260.208%2c325.155' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1144.2820144227624 310.7190990559839L1115.872378660803 381.0354150407552 1235.5516705189398 388.49171069130875z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M145.948%2c605.909C193.511%2c607.366%2c244.497%2c595.199%2c268.706%2c554.232C293.235%2c512.724%2c280.3%2c461.461%2c255.875%2c419.892C231.832%2c378.973%2c193.367%2c347.279%2c145.948%2c345.307C95.068%2c343.191%2c43.398%2c365.363%2c18.957%2c410.039C-4.715%2c453.309%2c8.725%2c505.707%2c35.557%2c547.092C59.868%2c584.589%2c101.281%2c604.541%2c145.948%2c605.909' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M483.2406610418195 260.86604614972003L405.5329883812899 131.5387609195904 276.20570315116026 209.24643358012 353.9133758116899 338.5737188102496z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1335.3003957761398 432.3450785132942L1359.3110916775806 262.67354242709706 1219.4632073516673 316.3561155956082z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M246.32119473426525 530.0271482027947L325.49684455168494 525.877728222572 279.684889672641 409.1889634865538z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M19.59006461034761 189.27325338821262L28.85295892001367 321.73881348194396 152.05562470407895 180.01035907854657z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1077.8642528419045 212.7442680953788L990.8727931955796 267.1025651062243 1115.9059685350103 370.4106060702891z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M628.1428550611337 437.79871519885046L588.6271914868889 509.0868593680275 715.3172395277769 532.7162826448061z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1002'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+    }
+
+   .container h3 {
+        color: azure;
+        /* font-family: 'EB Garamond', serif; */
+        /* font-family: 'Oxygen', sans-serif; */
+        /* font-family: 'Yeseva One', cursive; */
+        font-family: 'Poppins', sans-serif;
+        
+   }
+
+   .btn{
+        font-family: 'Aclonica', sans-serif;
+        font-family: 'EB Garamond', serif;
+        font-family: 'Neuton', serif;
+        font-family: 'Oxygen', sans-serif;
+        font-family: 'Yeseva One', cursive;
+        font-family: 'Poppins', sans-serif;
+        background-color: rgba(160, 167, 235, 0.666);
+        color:white;
+        border-radius: 22px;
+        border: initial;
+   }
+
+
+   .btn:hover {
+        background-color: initial;
+        color:white;
+        border: 2px solid rgba(160, 167, 235, 0.466);
+   }
+
+   .box i {
+        color:white;
+   }
+
+   .box i:hover {
+          color: rgb(66, 24, 105);
+          border: 0px solid white;
+   }
+
+   .profileIcon{
+        fill: rgba(160, 167, 235, 0.966);
+    }
+
+    .userbio{
+          color: aliceblue;
+    }
+</style>

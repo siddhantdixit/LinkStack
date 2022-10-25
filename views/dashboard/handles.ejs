@@ -208,7 +208,8 @@
                 }
                 else
                 {
-                    alert("Something went wrong! Please Try Again Later!");
+                    // alert("Something went wrong! Please Try Again Later!");
+                    swal("Error!", "Something went wrong! Try Again Later", "info");
                 }
                 handles_data = data;
             });
@@ -236,7 +237,8 @@
                     console.log(status);
                     if(status==='success')
                     {
-                        alert('Data Updated Successfully');
+                        // alert('Data Updated Successfully');
+                        swal("Good job!", "Data Updated Successfully!", "success");
                         location.reload();
                     }
                 });

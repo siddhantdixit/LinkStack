@@ -10,7 +10,7 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
 </head>
 <body>
@@ -63,7 +63,7 @@
         <div class="form-group">
             <label for="profileTitle" class="text-light">Profile Title</label>
             
-            <input id="profileTitle" type="text" name="title" value="" placeholder="Socail/Business/Creator/..">
+            <input id="profileTitle" type="text" name="title" value="" placeholder="Social/Business/Creator/..">
         </div>
         <div class="form-group">
            <label for="bio" class="text-light">Bio</label><br>
@@ -89,6 +89,8 @@
           <option value="worldmapindia">WorldMap-India</option>
           <option value="sprinkle">Sprinkle</option>
           <option value="meteor">Meteor</option>
+          <option value="masscircles">MassCircles</option>
+          <option value="animatedshape">AnimatedShape</option>
         </select>
        </div>
       
@@ -114,7 +116,8 @@
             }
             else
             {
-                alert("Error Fetching Data! Try Again");
+                // alert("Error Fetching Data! Try Again");
+                swal("Oops!", "Error Fetching Data! Try Again", "info");
                 location.reload();
             }
             console.log(data);
@@ -145,13 +148,16 @@
               success: function(response){
                  if(response != 0){
                      console.log('success');
-                     alert("Profile Saved!");
+                    //  alert("Profile Saved!");
+                    swal("Good job!", "Profile Saved!", "success");
                  }else{
-                    alert('Something went wrong!');
+                    // alert('Something went wrong!');
+                    swal("Error!", "Something Went Wrong!", "info");
                  }
               },
            }).fail(()=>{
-               alert("Something went wrong! Try Again Later");
+            //    alert("Something went wrong! Try Again Later");
+            swal("Error!", "Something went wrong! Try Again Later", "info");
            })
     });
 
