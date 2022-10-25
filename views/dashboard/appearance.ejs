@@ -91,6 +91,88 @@
           <option value="masscircles">MassCircles</option>
           <option value="animatedshape">AnimatedShape</option>
         </select>
+        <a class="modal-open btn">Change theme</a>
+       </div>
+
+       <!-- Theme Select Dialog Box -->
+       <div class="modal hidden">
+        <div class="modal-rect">
+            <div class="modal-close">
+                <a>X</a>
+            </div>
+            <div class="modal-title">
+                <h2>Choose Theme</h2>
+            </div>
+            <div class="theme-parent">
+                <div class="theme-row">
+                    <div class="theme-card default">
+                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <p class="theme-name">Default</p>
+                    </div>
+                    <div class="theme-card dark">
+                        <div class="theme-img" style="background-color: #000000; color: white;">IMG</div>
+                        <p class="theme-name">Dark</p>
+                    </div>
+                    <div class="theme-card wave">
+                        <div class="theme-img" style="background-color: #0E2A47; color: white;">IMG</div>
+                        <p class="theme-name">Wave</p>
+                    </div>
+                    <div class="theme-card purple">
+                        <div class="theme-img" style="background-color: #2511B6; color: white;">IMG</div>
+                        <p class="theme-name">Purple</p>
+                    </div>
+                    <div class="theme-card hexagonal">
+                        <div class="theme-img" style="background-color: #074D96; color: white;">IMG</div>
+                        <p class="theme-name">Hexagonal</p>
+                    </div>
+                </div>
+                <div class="theme-row purp">
+                    <div class="theme-card bluedot">
+                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <p class="theme-name">BlueDot</p>
+                    </div>
+                    <div class="theme-card purpledot">
+                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <p class="theme-name">PurpleDot</p>
+                    </div>
+                    <div class="theme-card shapes">
+                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <p class="theme-name">Shapes</p>
+                    </div>
+                    <div class="theme-card snow">
+                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <p class="theme-name">Snow</p>
+                    </div>
+                    <div class="theme-card moon">
+                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <p class="theme-name">Moon</p>
+                    </div>
+                </div>
+                <div class="theme-row">
+                    <div class="theme-card soundwave">
+                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <p class="theme-name">Soundwave</p>
+                    </div>
+                    <div class="theme-card abstractpaper">
+                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <p class="theme-name">Abstractpaper</p>
+                    </div>
+                    <div class="theme-card stockmarket">
+                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <p class="theme-name">StockMarket</p>
+                    </div>
+                    <div class="theme-card worldmapindia">
+                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <p class="theme-name">WorldMap-India</p>
+                    </div>
+                    <div class="theme-card sprinkle">
+                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <p class="theme-name">Sprinkle</p>
+                    </div>
+                </div>
+            </div>
+            <a class="theme-submit">Done</a>
+        </div>
        </div>
       
        <div class="form-group">
@@ -159,6 +241,37 @@
             swal("Error!", "Something went wrong! Try Again Later", "info");
            })
     });
+
+    const toggleModal = () => {
+        document.querySelector('.modal').classList.toggle('hidden');
+    }
+    const setTheme = (themeName) => {
+        // const themeCard = document.getElementsByClassName('theme-cards')
+        const selecttheme = document.querySelector('#profileTheme');
+        selecttheme.value = themeName;
+    }
+
+    // Toggle Dialog Box
+    document.querySelector('.modal-open').addEventListener('click', toggleModal);
+    document.querySelector('.theme-submit').addEventListener('click', toggleModal);
+    document.querySelector('.modal-close').addEventListener('click', toggleModal);
+
+    // Theme setting
+    document.querySelector('.default').addEventListener('click', function(){setTheme('default')})
+    document.querySelector('.dark').addEventListener('click', function(){setTheme('dark')})
+    document.querySelector('.wave').addEventListener('click', function(){setTheme('wave')})
+    document.querySelector('.purple').addEventListener('click', function(){setTheme('purple')})
+    document.querySelector('.hexagonal').addEventListener('click', function(){setTheme('hexagonal')})
+    document.querySelector('.bluedot').addEventListener('click', function(){setTheme('bluedot')})
+    document.querySelector('.purpledot').addEventListener('click', function(){setTheme('purpledot')})
+    document.querySelector('.shapes').addEventListener('click', function(){setTheme('shapes')})
+    document.querySelector('.snow').addEventListener('click', function(){setTheme('snow')})
+    document.querySelector('.moon').addEventListener('click', function(){setTheme('moon')})
+    document.querySelector('.soundwave').addEventListener('click', function(){setTheme('soundwave')})
+    document.querySelector('.abstractpaper').addEventListener('click', function(){setTheme('abstractpaper')})
+    document.querySelector('.stockmarket').addEventListener('click', function(){setTheme('stockmarket')})
+    document.querySelector('.worldmapindia').addEventListener('click', function(){setTheme('worldmapindia')})
+    document.querySelector('.sprinkle').addEventListener('click', function(){setTheme('sprinkle')})
 
 </script>
 
