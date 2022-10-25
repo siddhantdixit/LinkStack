@@ -98,7 +98,11 @@
        <div class="modal hidden">
         <div class="modal-rect">
             <div class="modal-close">
-                <a>X</a>
+                <a>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" class="close-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </a>
             </div>
             <div class="modal-title">
                 <h2>Choose Theme</h2>
@@ -128,46 +132,56 @@
                 </div>
                 <div class="theme-row purp">
                     <div class="theme-card bluedot">
-                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <div class="theme-img" style="background-color: #9CA3E6;">IMG</div>
                         <p class="theme-name">BlueDot</p>
                     </div>
                     <div class="theme-card purpledot">
-                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <div class="theme-img" style="background-color: #8782E4;">IMG</div>
                         <p class="theme-name">PurpleDot</p>
                     </div>
                     <div class="theme-card shapes">
-                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <div class="theme-img" style="background-color: #3D3BC1; color: white;">IMG</div>
                         <p class="theme-name">Shapes</p>
                     </div>
                     <div class="theme-card snow">
-                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <div class="theme-img" style="background-color: #24588E; color: white;">IMG</div>
                         <p class="theme-name">Snow</p>
                     </div>
                     <div class="theme-card moon">
-                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <div class="theme-img" style="background-color: #32325D; color: white;">IMG</div>
                         <p class="theme-name">Moon</p>
                     </div>
                 </div>
                 <div class="theme-row">
                     <div class="theme-card soundwave">
-                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <div class="theme-img" style="background-color: #043D83; color: white;">IMG</div>
                         <p class="theme-name">Soundwave</p>
                     </div>
                     <div class="theme-card abstractpaper">
-                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <div class="theme-img" style="background-color: #2E409E; color: white;">IMG</div>
                         <p class="theme-name">Abstractpaper</p>
                     </div>
                     <div class="theme-card stockmarket">
-                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <div class="theme-img" style="background-color: #0E2A47; color: white;">IMG</div>
                         <p class="theme-name">StockMarket</p>
                     </div>
                     <div class="theme-card worldmapindia">
-                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <div class="theme-img" style="background-color: #0E2A47; color: white;">IMG</div>
                         <p class="theme-name">WorldMap-India</p>
                     </div>
                     <div class="theme-card sprinkle">
-                        <div class="theme-img" style="background-color: #008080;">IMG</div>
+                        <div class="theme-img" style="background-color: #0E2A47; color: white;">IMG</div>
                         <p class="theme-name">Sprinkle</p>
+                    </div>
+                </div>
+                <div class="theme-row">
+                    <div class="theme-card masscircles">
+                        <div class="theme-img" style="background-color: #0E2A47 ; color: #9BA3E6;">IMG</div>
+                        <p class="theme-name">MassCircles</p>
+                    </div>
+                    <div class="theme-card animatedshape">
+                        <div class="theme-img" style="background-color: #0E2A47; color: #9AA2E5;">IMG</div>
+                        <p class="theme-name">AnimatedShape</p>
                     </div>
                 </div>
             </div>
@@ -272,6 +286,8 @@
     document.querySelector('.stockmarket').addEventListener('click', function(){setTheme('stockmarket')})
     document.querySelector('.worldmapindia').addEventListener('click', function(){setTheme('worldmapindia')})
     document.querySelector('.sprinkle').addEventListener('click', function(){setTheme('sprinkle')})
+    document.querySelector('.masscircles').addEventListener('click', function(){setTheme('masscircles')})
+    document.querySelector('.animatedshape').addEventListener('click', function(){setTheme('animatedshape')})
 
 </script>
 
