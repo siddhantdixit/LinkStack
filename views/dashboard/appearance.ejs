@@ -186,7 +186,9 @@
                     </div>
                 </div>
             </div>
-            <a class="theme-submit">Done</a>
+            <div class="theme-submit-parent">
+                <a class="theme-submit">Done</a>
+            </div>
         </div>
        </div>
       
@@ -217,6 +219,8 @@
                 location.reload();
             }
             console.log(data);
+            // Set active theme on page-load
+            $("."+data.theme).addClass("active-theme");
             console.log(status);
         });
     });
@@ -260,10 +264,20 @@
     const toggleModal = () => {
         document.querySelector('.modal').classList.toggle('hidden');
     }
+
     const setTheme = (themeName) => {
-        // const themeCard = document.getElementsByClassName('theme-cards')
         const selecttheme = document.querySelector('#profileTheme');
         selecttheme.value = themeName;
+
+        // Set active Theme on button click
+        const themeArray = document.getElementsByClassName("theme-card");
+        // set all themes as inactive first
+        for(i=0; i<themeArray.length; i++){
+            themeArray[i].classList.remove("active-theme");
+        }
+        // Set border on active theme onClick
+        const activeTheme = document.getElementsByClassName(themeName);
+        activeTheme[0].classList.add("active-theme");
     }
 
     // Toggle Dialog Box
