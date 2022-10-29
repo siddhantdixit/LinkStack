@@ -30,7 +30,7 @@ span{
 }
 
 .nav-brand{
-    font-size: 1.5em;
+    font-size: 2.0em;
     font-weight: bold;
 }
 
@@ -48,10 +48,19 @@ span{
 }
 
 .border-shadow{
-    border: 1px solid var(--border-btn);
-    box-shadow: 1px 3px 10px #e9ecef;
+    border: 2px solid var(--border-btn);
+    box-decoration-break: clone;
+    box-shadow: 1px 3px 10px #601edb;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 3px;
+    border-radius: 5px;
 }
 
+.border-shadow:hover{
+    background-color: #9786e0;
+    transform: scale(1.1);
+}
 .text-dark{
     color: var(--dark);
 }
@@ -65,7 +74,7 @@ span{
 }
 
 .text-gradient{
-    background: linear-gradient(to right,#8e2de2,#4a00e0);
+    background: linear-gradient(to right,#4c008e,#320390);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
