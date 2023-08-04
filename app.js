@@ -1,44 +1,48 @@
-const express = require("express");
-const morgan = require("morgan");
-const axios = require("axios");
-var cookieParser = require('cookie-parser')
-var _ = require('lodash');
-const {LOGIN_MAXAGE, VERIFICATION_MAXAGE } = require("./config");
-require("dotenv").config();
+// Importing required modules and libraries
+const express = require("express"); // Express framework for building web applications
+const morgan = require("morgan"); // HTTP request logger middleware for Node.js
+const axios = require("axios"); // HTTP client for making requests to external APIs
+var cookieParser = require('cookie-parser'); // Middleware to parse cookies in the request object
+var _ = require('lodash'); // Utility library for various JavaScript functions
+const { LOGIN_MAXAGE, VERIFICATION_MAXAGE } = require("./config"); // Importing constants LOGIN_MAXAGE and VERIFICATION_MAXAGE from the config file
+require("dotenv").config(); // Loading environment variables from the .env file
 
+// Importing GridFS for storing large files in MongoDB
 const Grid = require("gridfs-stream");
-const upload = require('./middleware/upload')
+const upload = require('./middleware/upload'); // Custom middleware for handling file uploads
 
+// Importing database models
+const Account = require('./models/account'); // Model for user accounts
+const Profile = require('./models/profile'); // Model for user profiles
+const { sendEmailVerificationLink } = require('./utils/emailController'); // Function to send email verification links
 
-//Files
-const Account = require('./models/account');
-const Profile = require('./models/profile');
-const {sendEmailVerificationLink}= require('./utils/emailController');
+// Importing required libraries for database connection
+const mongoose = require("mongoose"); // MongoDB object modeling tool
+const jwt = require("jsonwebtoken"); // JSON Web Token library for creating and verifying tokens
 
-const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
+const app = express(); // Creating an instance of the Express application
 
-const app = express();
+// Middleware setup
+app.use(morgan("dev")); // Logging HTTP requests to the console in development mode
+app.use(express.static('public')); // Serving static files from the 'public' directory
+app.use(express.urlencoded({ extended: false })); // Parsing URL-encoded data in the request body
+app.use(express.json()); // Parsing JSON data in the request body
+app.use(cookieParser()); // Parsing cookies in the request headers
+app.set("view engine", "ejs"); // Setting EJS as the view engine for rendering dynamic templates
+app.set("view engine", "pug"); // Setting Pug as the view engine (Note: This line is redundant as it overwrites the previous view engine setting)
+app.set("json spaces", 2); // Formatting JSON responses with an indentation of 2 spaces
 
-
-app.use(morgan("dev"));
-app.use(express.static('public'));
-app.use(express.urlencoded({extended:false}));
-app.use(express.json());
-app.use(cookieParser());
-app.set("view engine", "ejs");
-app.set("view engine", "pug");
-app.set("json spaces", 2);
-
-
-mongoose.connect(process.env.MONGODBURL, { useNewUrlParser: true, useUnifiedTopology: true})
+// Connecting to MongoDB
+mongoose.connect(process.env.MONGODBURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
     console.log('Connected to MongoDB.....');
+    // Starting the Express server after successfully connecting to MongoDB
     app.listen(process.env.PORT || 80, () => {
       console.log(`Listening at.... http://localhost:${process.env.PORT || 80}`);
     });
   })
   .catch((err) => console.log(err));
+
 
 
 
